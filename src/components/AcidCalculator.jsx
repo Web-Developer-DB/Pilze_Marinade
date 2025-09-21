@@ -15,8 +15,31 @@ import React, { useMemo, useState } from "react";
 
 function parseNumberDE(value) {
   if (value == null) return NaN;
-  // Erlaubt sowohl 1,23 als auch 1.23
-  const normalized = String(value).trim().replace(/\./g, ".").replace(/,(?=\d)/g, ".");
+  const trimmed = String(value).trim();
+  if (!trimmed) return NaN;
+
+  const compact = trimmed.replace(/[\s\u00a0\u202f']/g, '');
+  const lastComma = compact.lastIndexOf(',');
+  const lastDot = compact.lastIndexOf('.');
+  let normalized = compact;
+
+  if (lastComma > lastDot) {
+    normalized = normalized.replace(/\./g, '').replace(/,/g, '.');
+  } else if (lastDot > lastComma) {
+    const candidate = normalized.replace(/^[+-]/, '');
+    if (/^\d{1,3}(\.\d{3})+$/.test(candidate)) {
+      normalized = normalized.replace(/\./g, '');
+    } else {
+      const dotCount = (normalized.match(/\./g) || []).length;
+      if (dotCount > 1) {
+        normalized = normalized.replace(/\.(?=.*\.)/g, '');
+      }
+    }
+    normalized = normalized.replace(/,/g, '');
+  } else {
+    normalized = normalized.replace(/,/g, '.');
+  }
+
   const n = Number(normalized);
   return Number.isFinite(n) ? n : NaN;
 }
