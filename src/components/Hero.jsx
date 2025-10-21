@@ -5,10 +5,31 @@ import ChipsNav from './ChipsNav.jsx'
 export default function Hero(){
   return (
     <header className="hero reveal" aria-label="Titelbereich">
-      <h1>Pilze marinieren &amp; haltbar machen – Modern Edition</h1>
-      <p className="subtitle">
-        Naturfreundliches UI mit sanften Animationen, exakten Grammangaben und sicheren Einmach-Schritten – ohne Druck, ideal für Röhrlinge &amp; Lamellenpilze.
-      </p>
+      <p className="hero-eyebrow">Saison 2024 · Leitfaden</p>
+      <div className="hero-meta">
+        <h1>Pilze marinieren &amp; haltbar machen – Modern Edition</h1>
+        <p className="subtitle">
+          Naturfreundliches UI mit sanften Animationen, exakten Grammangaben und sicheren Einmach-Schritten – ohne Druck, ideal für Röhrlinge &amp; Lamellenpilze.
+        </p>
+      </div>
+
+      <div className="hero-actions" aria-label="Direkte Aktionen">
+        <a className="btn btn-primary" href="#marinade">
+          Schritte starten
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M13 6l6 6-6 6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+        <a className="btn btn-ghost" href="#saeure-rechner">
+          Säure-Rechner
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="3" strokeWidth="1.6" />
+            <path d="M8 7h8M8 11h8M8 15h3M13 15h3M8 19h3M13 19h3" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </a>
+      </div>
+
       <div className="badges" aria-label="Kerneigenschaften">
         <span className="badge" title="Exakte Grammangaben">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7h18M6 7l3 12h6l3-12M8 7a4 4 0 1 1 8 0" strokeWidth="1.6" /></svg>
@@ -23,6 +44,7 @@ export default function Hero(){
           Wasserbad
         </span>
       </div>
+
       <ChipsNav />
     </header>
   )

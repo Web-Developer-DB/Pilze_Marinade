@@ -1,14 +1,37 @@
 
-@keyframes drift { 0% { transform: translateY(0) translateX(0) } 50%{ transform: translateY(-6px) translateX(4px) } 100%{ transform: translateY(0) translateX(0) } }
-@keyframes shimmer { 0% { background-position: -200% 0 } 100%{ background-position: 200% 0 } }
-@keyframes sway { 0% { transform: rotate(0deg) } 50%{ transform: rotate(-3deg) } 100%{ transform: rotate(0deg) } }
-
-.reveal{ opacity:0; transform: translateY(18px) scale(.98); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.65,.2,1); will-change: opacity, transform; }
-.reveal.in{ opacity:1; transform: translateY(0) scale(1); }
-
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity:1; transform:none; transition:none }
-  .hero::before, .hero::after, .badge{ animation:none !important }
+@keyframes shimmer{ 0%{ background-position:-200% 0; } 100%{ background-position:200% 0; } }
+@keyframes sway{ 0%{ transform: rotate(0deg); } 50%{ transform: rotate(-3deg); } 100%{ transform: rotate(0deg); } }
+@keyframes orbit{
+  0%{ transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  50%{ transform: translate3d(6px,-18px,0) rotate(12deg) scale(1.05); }
+  100%{ transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+@keyframes floatSlow{
+  0%{ transform: translate3d(0,0,0); }
+  50%{ transform: translate3d(0,-8px,0); }
+  100%{ transform: translate3d(0,0,0); }
 }
 
-.card a:hover{ background-image: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent), var(--accent-2)); background-size: 300% 2px; animation: shimmer 2.2s linear infinite; }
+.reveal{
+  opacity:0;
+  transform: translate3d(0,28px,0) scale(.97);
+  filter: saturate(.9);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.2,.65,.2,1), filter .75s ease;
+  transition-delay: var(--stagger, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.in{
+  opacity:1;
+  transform: translate3d(0,0,0) scale(1);
+  filter: saturate(1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+}
