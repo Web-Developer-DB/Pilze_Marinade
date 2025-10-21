@@ -166,3 +166,15 @@ figure{ margin:0; }
     animation:none;
   }
 }
+
+@media (max-width: 768px), (pointer:coarse) and (hover:none){
+  body{
+    background-attachment: scroll;
+    background-image: none;
+  }
+  body::before,
+  body::after{
+    display:none;
+    animation:none;
+  }
+}
