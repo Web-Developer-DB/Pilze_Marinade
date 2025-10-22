@@ -54,3 +54,8 @@ src/
 
 ## Lizenz
 MIT © 2024 – siehe `LICENSE`
+
+---
+
+Open-Source-Projekt von Dimitri B.  
+Quellcode und Issues: https://github.com/Web-Developer-DB/Pilze_Marinade

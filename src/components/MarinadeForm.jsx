@@ -169,6 +169,9 @@ export default function MarinadeForm() {
 
   const safetyMeta = getSafetyMeta(evaluation.safety);
   const phMeta = getPhMeta(evaluation.phState);
+  const targetValue = Number.isFinite(evaluation.parsed?.target)
+    ? formatNumber(evaluation.parsed.target, locale, 2)
+    : null;
 
   const formattedResult = evaluation.result
     ? {
@@ -322,7 +325,13 @@ export default function MarinadeForm() {
         aria-live="polite"
         aria-label={t(locale, "status.title")}
       >
-        <h2>{t(locale, "status.title")}</h2>
+        <div className="status-head">
+          <h2>{t(locale, "status.title")}</h2>
+          <div className={`acid-pill ${targetValue ? "ready" : ""}`}>
+            <span>{t(locale, "input.target.label")}</span>
+            <strong>{targetValue ? `${targetValue} %` : "—"}</strong>
+          </div>
+        </div>
         <p>{t(locale, safetyMeta.key)}</p>
       </section>
 
@@ -355,11 +364,6 @@ export default function MarinadeForm() {
               <span className="result-label">{t(locale, "input.total.label")}</span>
               <strong>{formattedResult.total}</strong>
               <span className="result-suffix">{t(locale, "results.label.ml")}</span>
-            </div>
-            <div>
-              <span className="result-label">{t(locale, "input.target.label")}</span>
-              <strong>{formattedResult.target}</strong>
-              <span className="result-suffix">{t(locale, "results.label.percent")}</span>
             </div>
             <div>
               <span className="result-label">{t(locale, "input.vinegar.label")}</span>
