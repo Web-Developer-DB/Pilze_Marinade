@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import MarinadeForm from "./components/MarinadeForm.jsx";
+import RecipeGallery from "./components/RecipeGallery.jsx";
 import { LocaleProvider, useLocale } from "./lib/locale-context.jsx";
 import { t } from "./lib/i18n.js";
 
@@ -195,6 +196,7 @@ function AppContent() {
       <div className="section calculator-shell">
         <MarinadeForm />
       </div>
+      <RecipeGallery />
       <ProcessSection />
       <SafetySection />
       <FaqSection />

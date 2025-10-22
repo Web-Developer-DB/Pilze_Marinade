@@ -462,6 +462,115 @@
   margin:0;
 }
 
+.recipes{
+  gap: clamp(28px, 5vw, 48px);
+}
+
+.recipe-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.recipe-tag{
+  border:1px solid color-mix(in oklab, var(--hair, rgba(0,0,0,0.1)), transparent 35%);
+  background: color-mix(in oklab, var(--card, rgba(255,255,255,0.85)), transparent 10%);
+  border-radius:999px;
+  padding:8px 16px;
+  font-size:.9rem;
+  font-weight:600;
+  cursor:pointer;
+  transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
+}
+
+.recipe-tag:hover{
+  transform: translateY(-1px);
+  box-shadow:0 6px 14px rgba(0,0,0,0.1);
+}
+
+.recipe-tag.active{
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent, #2e7a5f) 70%, transparent), color-mix(in oklab, var(--accent-2, #4db482) 70%, transparent));
+  color:#04120d;
+  box-shadow:0 10px 22px rgba(0,0,0,0.18);
+}
+
+.recipe-grid{
+  display:grid;
+  gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.recipe-card{
+  background: color-mix(in oklab, var(--card, rgba(255,255,255,0.9)), transparent 6%);
+  border:1px solid color-mix(in oklab, var(--hair, rgba(0,0,0,0.1)), transparent 30%);
+  border-radius:20px;
+  padding: clamp(18px, 3vw, 26px);
+  display:grid;
+  gap:14px;
+  box-shadow:0 16px 30px rgba(0,0,0,0.12);
+}
+
+.recipe-head h3{
+  margin:0;
+}
+
+.recipe-head p{
+  margin:.3rem 0 0;
+  color: color-mix(in oklab, var(--muted, #5f6a74), #fff 6%);
+}
+
+.recipe-meta{
+  display:grid;
+  gap:10px;
+  margin:1rem 0 0;
+}
+
+.recipe-meta div{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  font-size:.9rem;
+}
+
+.recipe-meta dt{
+  font-weight:600;
+  color: color-mix(in oklab, var(--muted, #5f6a74), #fff 4%);
+}
+
+.recipe-meta dd{
+  margin:0;
+  font-weight:600;
+}
+
+.recipe-details summary{
+  cursor:pointer;
+  font-weight:600;
+  color: color-mix(in oklab, var(--accent, #2e7a5f) 65%, transparent);
+}
+
+.recipe-details summary::marker{
+  color: color-mix(in oklab, var(--accent, #2e7a5f) 65%, transparent);
+}
+
+.recipe-body{
+  display:grid;
+  gap:14px;
+  margin-top:12px;
+}
+
+.recipe-body ul,
+.recipe-body ol{
+  margin:0;
+  padding-left:1.1rem;
+  gap:8px;
+}
+
+.recipe-body h4{
+  margin:0 0 6px;
+  font-size:1rem;
+  color: color-mix(in oklab, var(--accent-2, #4db482) 70%, transparent);
+}
+
 .process-list{
   list-style:none;
   margin:0;

@@ -9,6 +9,7 @@ React-Anwendung zur sicheren Berechnung von Essig- und Wasseranteilen für einge
 - **Sicherheits-Ampel:** Ampel-Logik für Ziel-Säure (≥ 2,5 % sicher, 2,0–2,49 % gekühlt, < 2,0 % unsicher) plus pH-Auswertung.
 - **Barrierearm:** ARIA-Live-Feedback für Fehler und Ergebnisse, klare Hinweise und optionale Dokumentations- („Im Glas“-)Ansicht.
 - **Unit-Tests:** Jest-Tests für Rechenkern und nummerische Parser.
+- **Rezeptgalerie:** 20 komplett ausgearbeitete Marinaden für unterschiedliche Pilzarten, filterbar nach Geschmacksprofil.
 
 ## Installation & Entwicklung
 ```bash
