@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MarinadeForm from "./components/MarinadeForm.jsx";
-import { LocaleProvider, useLocale } from "./lib/locale-context.js";
+import { LocaleProvider, useLocale } from "./lib/locale-context.jsx";
 import { t } from "./lib/i18n.js";
 
 function Hero() {

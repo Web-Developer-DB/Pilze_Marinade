@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { calcAcidVolumes, safetyStatus } from "../lib/calc.js";
 import { parseLocalizedNumber, formatNumber } from "../lib/number.js";
 import { supportedLocales, t } from "../lib/i18n.js";
-import { useLocale } from "../lib/locale-context.js";
+import { useLocale } from "../lib/locale-context.jsx";
 
 const ranges = {
   total: { min: 1, max: 20000 },
