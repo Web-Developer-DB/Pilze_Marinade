@@ -1,41 +1,51 @@
 
-# Pilze marinieren – React (Modern UI)
+# Pilze_Marinade – Mehrsprachiger Marinade-Rechner
 
-Aktualisierte Einmach-Anleitung mit einer modernen, animierten Oberfläche. Das Interface bringt klare Kontraste, Glas-Effekte und flüssige Reveal-Animationen, damit Rezepte und Sicherheitsangaben schnell erfassbar bleiben – egal ob mobil oder am Desktop.
+React-Anwendung zur sicheren Berechnung von Essig- und Wasseranteilen für eingelegtes Gemüse oder Pilze. Der Rechner ist internationalisiert (Deutsch, Englisch, Russisch), validiert Eingaben robust und informiert über die notwendige Säure für botulismussichere Vorräte.
 
-## Highlights
-- **Hero-Redesign:** animierte Ambient-Light-Flächen, prägnante CTAs und Chips-Navigation.
-- **Theme Controls:** persistente Farbwelten (Erdtöne, Waldgrün, Kontrast) inklusive Light/Dark-Schalter.
-- **Säure-Rechner 2.0:** strukturierte Kartenansicht, Status-Pills für den pH-Wert, printbare Checkliste.
-- **Micro-Interactions:** Hover-, Orbit- und Scroll-Reveal-Effekte für Karten, Buttons und Badges.
-- **Barrierearme Typografie:** optimierte Abstände, Farbkontraste und responsiver Satz auf Basis von Vite + React 18.
+## Kernfunktionen
+- **Berechnung & Validierung:** mathematisch korrekte Volumenberechnung (2 Dezimalstellen) inkl. Summenprüfung und Fehlercodes.
+- **Mehrsprachig:** UI-Strings in `de/en/ru`, Umschaltung per Dropdown, Ausgabe mit `Intl.NumberFormat`.
+- **Sicherheits-Ampel:** Ampel-Logik für Ziel-Säure (≥ 2,5 % sicher, 2,0–2,49 % gekühlt, < 2,0 % unsicher) plus pH-Auswertung.
+- **Barrierearm:** ARIA-Live-Feedback für Fehler und Ergebnisse, klare Hinweise und optionale Dokumentations- („Im Glas“-)Ansicht.
+- **Unit-Tests:** Jest-Tests für Rechenkern und nummerische Parser.
 
 ## Installation & Entwicklung
 ```bash
 npm install
 npm run dev
 ```
+- Entwicklungsserver: http://localhost:5173
+- Produktionsbuild: `npm run build`
+- Vorschau-Build: `npm run preview`
 
-- Development-Server: http://localhost:5173
-- Production-Build: `npm run build` (Artefakte landen in `dist/`)
-- Preview-Build: `npm run preview`
+## Tests
+```bash
+npm test
+```
+Die Tests decken den Rechenkern (`calcAcidVolumes`) sowie Parsing- und Formatierungsfunktionen ab.
 
-## Sicherheits-Update (Essigsäure)
+## Sicherheitshinweise
+- Für Lagerung bei Raumtemperatur Ziel-Säure ≥ 2,5 % und gemessener pH ≤ 4,6.
+- Saubere Arbeitsweise: Gläser sterilisieren, heiß abfüllen, dunkel und kühl lagern.
+- Bei geringerer Säure (< 2,5 %) ausschließlich gekühlt aufbewahren.
 
-Die App kalkuliert weiterhin mit **25 % Essigessenz** im Verhältnis **1,8 : 1** zu Zusatzwasser. Ziel-pH liegt bei **≤ 4,6**.
-
-### Modus & pH-Check
-- **Standard:** 2,5 % Essigsäure
-- **Robust:** 3,0 % oder 3,5 % (Schnellauswahl-Buttons)
-- **pH-Ampel:** OK ≤ 4,6 · Grenzfall 4,61 – 4,80 · Nicht OK > 4,8
-- **Print-Ansicht:** Prozess-Checkliste via Browser-Druck exportieren
-
-*Hinweis:* Für 1000 g vorgekochte Pilze + 700 g Wasser ergeben sich bei 3,5 % Ziel-Säure 161,2 g Essigessenz 25 % + 290,1 g Zusatzwasser.
-
-## Technik
-- Vite 5 · React 18
-- CSS mit modernen Farb-Mix-Funktionen (oklab), glassmorphische Layer, IntersectionObserver für Scroll-Reveal
-- Keine Server-Komponenten – vollständig clientseitig und offline nutzbar
+## Projektstruktur
+```
+src/
+├─ components/MarinadeForm.jsx
+├─ lib/
+│  ├─ calc.js
+│  ├─ i18n.js
+│  └─ number.js
+├─ i18n/
+│  ├─ de.json
+│  ├─ en.json
+│  └─ ru.json
+└─ __tests__/
+   ├─ calc.spec.js
+   └─ number.spec.js
+```
 
 ## Lizenz
-MIT © 2024 – Siehe `LICENSE`
+MIT © 2024 – siehe `LICENSE`
