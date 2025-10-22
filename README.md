@@ -8,8 +8,8 @@ React-Anwendung zur sicheren Berechnung von Essig- und Wasseranteilen für einge
 - **Mehrsprachig:** UI-Strings in `de/en/ru`, Umschaltung per Dropdown, Ausgabe mit `Intl.NumberFormat`.
 - **Sicherheits-Ampel:** Ampel-Logik für Ziel-Säure (≥ 2,5 % sicher, 2,0–2,49 % gekühlt, < 2,0 % unsicher) plus pH-Auswertung.
 - **Barrierearm:** ARIA-Live-Feedback für Fehler und Ergebnisse, klare Hinweise und optionale Dokumentations- („Im Glas“-)Ansicht.
+- **Rezeptgalerie:** 20 aus Russland stammende Traditionsmarinaden, filterbar nach Tags (Tradition, Wintervorrat, Knoblauch u. a.).
 - **Unit-Tests:** Jest-Tests für Rechenkern und nummerische Parser.
-- **Rezeptgalerie:** 20 komplett ausgearbeitete Marinaden für unterschiedliche Pilzarten, filterbar nach Geschmacksprofil.
 
 ## Installation & Entwicklung
 ```bash
@@ -24,7 +24,7 @@ npm run dev
 ```bash
 npm test
 ```
-Die Tests decken den Rechenkern (`calcAcidVolumes`) sowie Parsing- und Formatierungsfunktionen ab.
+Die Tests decken den Rechenkern (`calcAcidVolumes`), Parsing- und Formatierungsfunktionen sowie die Rezeptdatenbank (`recipes.spec.js`) ab.
 
 ## Sicherheitshinweise
 - Für Lagerung bei Raumtemperatur Ziel-Säure ≥ 2,5 % und gemessener pH ≤ 4,6.
@@ -34,18 +34,22 @@ Die Tests decken den Rechenkern (`calcAcidVolumes`) sowie Parsing- und Formatier
 ## Projektstruktur
 ```
 src/
-├─ components/MarinadeForm.jsx
+├─ components/
+│  ├─ MarinadeForm.jsx
+│  └─ RecipeGallery.jsx
 ├─ lib/
 │  ├─ calc.js
 │  ├─ i18n.js
-│  └─ number.js
+│  ├─ number.js
+│  └─ recipes.js
 ├─ i18n/
 │  ├─ de.json
 │  ├─ en.json
 │  └─ ru.json
 └─ __tests__/
    ├─ calc.spec.js
-   └─ number.spec.js
+   ├─ number.spec.js
+   └─ recipes.spec.js
 ```
 
 ## Lizenz

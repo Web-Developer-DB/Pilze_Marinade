@@ -20,6 +20,6 @@ describe("recipes dataset", () => {
     const mapped = getRecipesForLocale("en");
     expect(mapped[0].text).toStrictEqual(recipes[0].locale.en);
     const fallback = getRecipesForLocale("fr");
-    expect(fallback[0].text).toStrictEqual(recipes[0].locale.de);
+    expect(fallback[0].text).toStrictEqual(recipes[0].locale.ru);
   });
 });
