@@ -25,7 +25,7 @@ function Hero() {
     <section className="hero-section" id="top">
       <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
-        <p className="hero-eyebrow">Pilze_Marinade</p>
+        <p className="hero-eyebrow">{t(locale, "brand.name")}</p>
         <h1>{t(locale, "hero.title")}</h1>
         <p className="hero-lead">{t(locale, "hero.subtitle")}</p>
         <div className="hero-actions">
