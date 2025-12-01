@@ -63,15 +63,14 @@ export default function SiteHeader() {
           </span>
         </a>
 
-        <nav className="site-nav" aria-label="Primär">
-          {navItems.map((item) => (
-            <a key={item.key} href={item.href}>
-              {t(locale, item.key)}
-            </a>
-          ))}
-        </nav>
-
         <div className="site-actions">
+          <nav className="site-nav" aria-label="Primär">
+            {navItems.map((item) => (
+              <a key={item.key} href={item.href}>
+                {t(locale, item.key)}
+              </a>
+            ))}
+          </nav>
           <div className="quick-links">
             {navItems.slice(0, 3).map((item) => (
               <a key={item.key} href={item.href}>

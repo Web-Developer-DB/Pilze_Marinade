@@ -198,22 +198,6 @@ export default function MarinadeForm() {
           <h1 id="marinade-title">{t(locale, "app.title")}</h1>
           <p className="lead">{t(locale, "app.lead")}</p>
         </div>
-        <label className="locale-switch" htmlFor="locale-select">
-          <span className="locale-label" aria-hidden="true">🌍</span>
-          <span className="locale-text">{t(locale, "locale.switch")}</span>
-          <select
-            id="locale-select"
-            value={locale}
-            onChange={(event) => setLocale(event.target.value)}
-            aria-label={t(locale, "locale.switch")}
-          >
-            {localeOptions.map((loc) => (
-              <option value={loc} key={loc}>
-                {t(locale, `locale.${loc}`)}
-              </option>
-            ))}
-          </select>
-        </label>
       </header>
 
       <div className="marinade-layout">

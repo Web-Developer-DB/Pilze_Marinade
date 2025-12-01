@@ -151,19 +151,7 @@
 }
 
 .quick-links{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-
-.quick-links a{
-  padding:6px 12px;
-  border-radius:999px;
-  border:1px solid color-mix(in oklab, var(--glass-stroke), transparent 20%);
-  background: color-mix(in oklab, var(--glass-bg), transparent 4%);
-  font-size:.85rem;
-  font-weight:600;
-  color: var(--nav-link-ink);
+  display:none;
 }
 
 .header-locale{
@@ -374,6 +362,20 @@
   }
   .menu-trigger{
     display:inline-flex;
+  }
+  .quick-links{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .quick-links a{
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid color-mix(in oklab, var(--glass-stroke), transparent 20%);
+    background: color-mix(in oklab, var(--glass-bg), transparent 4%);
+    font-size:.85rem;
+    font-weight:600;
+    color: var(--nav-link-ink);
   }
 }
 
