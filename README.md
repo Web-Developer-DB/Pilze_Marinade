@@ -1,30 +1,31 @@
 
 # Pilze_Marinade – Mehrsprachiger Marinade-Rechner
 
-React-Anwendung zur sicheren Berechnung von Essig- und Wasseranteilen für eingelegtes Gemüse oder Pilze. Der Rechner ist internationalisiert (Deutsch, Englisch, Russisch), validiert Eingaben robust und informiert über die notwendige Säure für botulismussichere Vorräte.
+Pilze_Marinade ist ein modernes React-Interface zum sicheren Marinieren von Pilzen und Gemüse. Die App kombiniert ein präzises Säure-Berechnungstool mit einer kuratierten Rezeptgalerie, farbtheoretisch abgestimmten Themes, responsivem Layout sowie umfangreichen Accessibility-Maßnahmen (ARIA Live Regions, Tastaturfokus, Screenreader-Texte).
 
-## Kernfunktionen
-- **Berechnung & Validierung:** mathematisch korrekte Volumenberechnung (2 Dezimalstellen) inkl. Summenprüfung und Fehlercodes.
-- **Mehrsprachig:** UI-Strings in `de/en/ru`, Umschaltung per Dropdown, Ausgabe mit `Intl.NumberFormat`.
-- **Sicherheits-Ampel:** Ampel-Logik für Ziel-Säure (≥ 2,5 % sicher, 2,0–2,49 % gekühlt, < 2,0 % unsicher) plus pH-Auswertung.
-- **Barrierearm:** ARIA-Live-Feedback für Fehler und Ergebnisse, klare Hinweise und optionale Dokumentations- („Im Glas“-)Ansicht.
-- **Rezeptgalerie:** 20 aus Russland stammende Traditionsmarinaden, filterbar nach Tags (Tradition, Wintervorrat, Knoblauch u. a.).
-- **Unit-Tests:** Jest-Tests für Rechenkern und nummerische Parser.
+## Features
+- **Berechnung & Validierung** – mathematisch korrekte Volumenberechnung in Millilitern mit Summenprüfung, Fehlercodes, optionalem Jar-Modus und zweistufiger Sicherheitsampel (Ziel-Säure/Puffer pH).
+- **Mehrsprachig & formatbewusst** – alle Texte liegen in `de`, `en`, `ru`; Umschaltung verändert gleichzeitig Zahlformate dank `Intl.NumberFormat`.
+- **Theming & Color Scheme** – Theme-Dropdown plus Light/Dark Toggle greifen auf CSS-Custom-Properties zurück und passen Kontraste automatisch an.
+- **Navigation & Layout** – Sticky Header mit mobilem Drawer, Hero-Stats, Highlight Cards, Prozess- & FAQ-Blöcke sowie eine zweigeteilte Rechnerfläche.
+- **Rezeptgalerie** – 20 geprüfte russische Traditionsmarinaden mit Tag-Filter, Zutatenliste und Schritt-Anleitungen.
+- **Barrierefreiheit** – ARIA-Live-Ankündigungen, klare Fokuszustände, strukturierte Lists/Details, semantische Headings.
+- **Unit-Tests** – Jest-Suite prüft Rechenkern, Number-Parser, Rezeptdaten und i18n-Schlüssel.
 
 ## Installation & Entwicklung
 ```bash
 npm install
 npm run dev
 ```
-- Entwicklungsserver: http://localhost:5173
-- Produktionsbuild: `npm run build`
+- Entwicklungsserver: http://localhost:5173  
+- Produktionsbuild: `npm run build`  
 - Vorschau-Build: `npm run preview`
 
 ## Tests
 ```bash
 npm test
 ```
-Die Tests decken den Rechenkern (`calcAcidVolumes`), Parsing- und Formatierungsfunktionen sowie die Rezeptdatenbank (`recipes.spec.js`) ab.
+Die Tests decken `calcAcidVolumes`, Parser/Formatter (`number.js`), Rezept-Mapping sowie die i18n-Metadaten ab.
 
 ## Sicherheitshinweise
 - Für Lagerung bei Raumtemperatur Ziel-Säure ≥ 2,5 % und gemessener pH ≤ 4,6.
@@ -36,7 +37,8 @@ Die Tests decken den Rechenkern (`calcAcidVolumes`), Parsing- und Formatierungsf
 src/
 ├─ components/
 │  ├─ MarinadeForm.jsx
-│  └─ RecipeGallery.jsx
+│  ├─ RecipeGallery.jsx
+│  └─ SiteHeader.jsx
 ├─ lib/
 │  ├─ calc.js
 │  ├─ i18n.js
@@ -49,7 +51,8 @@ src/
 └─ __tests__/
    ├─ calc.spec.js
    ├─ number.spec.js
-   └─ recipes.spec.js
+   ├─ recipes.spec.js
+   └─ i18n.spec.js
 ```
 
 ## Lizenz
@@ -58,4 +61,4 @@ MIT © 2024 – siehe `LICENSE`
 ---
 
 Open-Source-Projekt von Dimitri B.  
-Quellcode und Issues: https://github.com/Web-Developer-DB/Pilze_Marinade
+#### Quellcode und Issues: https://github.com/Web-Developer-DB/Pilze_Marinade

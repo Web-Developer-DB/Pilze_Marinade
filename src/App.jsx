@@ -1,11 +1,26 @@
 import React, { useEffect } from "react";
 import MarinadeForm from "./components/MarinadeForm.jsx";
 import RecipeGallery from "./components/RecipeGallery.jsx";
+import SiteHeader from "./components/SiteHeader.jsx";
 import { LocaleProvider, useLocale } from "./lib/locale-context.jsx";
 import { t } from "./lib/i18n.js";
 
 function Hero() {
   const { locale } = useLocale();
+  const stats = [
+    {
+      value: t(locale, "hero.stat.acid.value"),
+      label: t(locale, "hero.stat.acid.label"),
+    },
+    {
+      value: t(locale, "hero.stat.ph.value"),
+      label: t(locale, "hero.stat.ph.label"),
+    },
+    {
+      value: t(locale, "hero.stat.languages.value"),
+      label: t(locale, "hero.stat.languages.label"),
+    },
+  ];
   return (
     <section className="hero-section" id="top">
       <div className="hero-overlay" aria-hidden="true" />
@@ -21,14 +36,14 @@ function Hero() {
             {t(locale, "hero.cta.secondary")}
           </a>
         </div>
-      </div>
-      <div className="hero-visual" aria-hidden="true">
-        <div className="hero-glass">
-          <span>Acid</span>
-          <strong>2.5%</strong>
-          <small>pH ≤ 4.6</small>
+        <div className="hero-stats">
+          {stats.map((stat) => (
+            <div key={stat.label} className="hero-stat">
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </div>
+          ))}
         </div>
-        <div className="hero-bubbles" />
       </div>
     </section>
   );
@@ -177,7 +192,11 @@ function PageFooter() {
   return (
     <footer className="page-footer">
       <p>{t(locale, "footer.credits")}</p>
-      <p>{t(locale, "footer.source")}</p>
+      <p>
+        <a href="https://github.com/Web-Developer-DB/Pilze_Marinade" target="_blank" rel="noopener noreferrer">
+          {t(locale, "footer.source")}
+        </a>
+      </p>
     </footer>
   );
 }
@@ -208,9 +227,12 @@ function AppContent() {
 export default function App() {
   return (
     <LocaleProvider>
-      <main className="app-shell">
-        <AppContent />
-      </main>
+      <div className="app-surface">
+        <SiteHeader />
+        <main className="app-shell">
+          <AppContent />
+        </main>
+      </div>
     </LocaleProvider>
   );
 }

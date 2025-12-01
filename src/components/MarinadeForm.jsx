@@ -216,187 +216,193 @@ export default function MarinadeForm() {
         </label>
       </header>
 
-      <div className="mode-toggle" role="group" aria-label="Mode">
-        <label className={mode === "calc" ? "active" : ""}>
-          <input
-            type="radio"
-            name="mode"
-            value="calc"
-            checked={mode === "calc"}
-            onChange={() => setMode("calc")}
-          />
-          {t(locale, "input.mode.calculated")}
-        </label>
-        <label className={mode === "jar" ? "active" : ""}>
-          <input
-            type="radio"
-            name="mode"
-            value="jar"
-            checked={mode === "jar"}
-            onChange={() => setMode("jar")}
-          />
-          {t(locale, "input.mode.jar")}
-        </label>
-      </div>
-
-      {mode === "jar" && <p className="mode-note">{t(locale, "input.mode.note")}</p>}
-
-      <form className="marinade-form" noValidate>
-        <fieldset>
-          <legend className="sr-only">Inputs</legend>
-          <div className="field">
-            <label htmlFor="field-total">{t(locale, "input.total.label")}</label>
-            <input
-              id="field-total"
-              inputMode="decimal"
-              autoComplete="off"
-              placeholder={t(locale, "placeholder.number")}
-              value={inputs.total}
-              onChange={onInputChange("total")}
-              onBlur={onBlur("total")}
-              aria-describedby="total-help"
-            />
-            <p id="total-help" className="hint">
-              {t(locale, "input.total.help")}
-            </p>
-            {showFieldError("total") && <p className="error">{showFieldError("total")}</p>}
+      <div className="marinade-layout">
+        <div className="marinade-pane">
+          <div className="mode-toggle" role="group" aria-label="Mode">
+            <label className={mode === "calc" ? "active" : ""}>
+              <input
+                type="radio"
+                name="mode"
+                value="calc"
+                checked={mode === "calc"}
+                onChange={() => setMode("calc")}
+              />
+              {t(locale, "input.mode.calculated")}
+            </label>
+            <label className={mode === "jar" ? "active" : ""}>
+              <input
+                type="radio"
+                name="mode"
+                value="jar"
+                checked={mode === "jar"}
+                onChange={() => setMode("jar")}
+              />
+              {t(locale, "input.mode.jar")}
+            </label>
           </div>
 
-          <div className="field">
-            <label htmlFor="field-vinegar">{t(locale, "input.vinegar.label")}</label>
-            <input
-              id="field-vinegar"
-              inputMode="decimal"
-              autoComplete="off"
-              placeholder={t(locale, "placeholder.number")}
-              value={inputs.vinegar}
-              onChange={onInputChange("vinegar")}
-              onBlur={onBlur("vinegar")}
-              aria-describedby="vinegar-help"
-            />
-            <p id="vinegar-help" className="hint">
-              {t(locale, "input.vinegar.help")}
-            </p>
-            {showFieldError("vinegar") && <p className="error">{showFieldError("vinegar")}</p>}
-          </div>
+          {mode === "jar" && <p className="mode-note">{t(locale, "input.mode.note")}</p>}
 
-          <div className="field">
-            <label htmlFor="field-target">{t(locale, "input.target.label")}</label>
-            <input
-              id="field-target"
-              inputMode="decimal"
-              autoComplete="off"
-              placeholder={t(locale, "placeholder.number")}
-              value={inputs.target}
-              onChange={onInputChange("target")}
-              onBlur={onBlur("target")}
-              aria-describedby="target-help"
-            />
-            <p id="target-help" className="hint">
-              {t(locale, "input.target.help")}
-            </p>
-            {showFieldError("target") && <p className="error">{showFieldError("target")}</p>}
-          </div>
+          <form className="marinade-form" noValidate>
+            <fieldset>
+              <legend className="sr-only">Inputs</legend>
+              <div className="field">
+                <label htmlFor="field-total">{t(locale, "input.total.label")}</label>
+                <input
+                  id="field-total"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  placeholder={t(locale, "placeholder.number")}
+                  value={inputs.total}
+                  onChange={onInputChange("total")}
+                  onBlur={onBlur("total")}
+                  aria-describedby="total-help"
+                />
+                <p id="total-help" className="hint">
+                  {t(locale, "input.total.help")}
+                </p>
+                {showFieldError("total") && <p className="error">{showFieldError("total")}</p>}
+              </div>
 
-          <div className="field">
-            <label htmlFor="field-ph">{t(locale, "input.ph.label")}</label>
-            <input
-              id="field-ph"
-              inputMode="decimal"
-              autoComplete="off"
-              placeholder="4,50"
-              value={inputs.ph}
-              onChange={onInputChange("ph")}
-              onBlur={onBlur("ph")}
-            />
-            {evaluation.phError && (
-              <p className="error">{t(locale, `errors.${evaluation.phError}`)}</p>
-            )}
-          </div>
-        </fieldset>
-      </form>
+              <div className="field">
+                <label htmlFor="field-vinegar">{t(locale, "input.vinegar.label")}</label>
+                <input
+                  id="field-vinegar"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  placeholder={t(locale, "placeholder.number")}
+                  value={inputs.vinegar}
+                  onChange={onInputChange("vinegar")}
+                  onBlur={onBlur("vinegar")}
+                  aria-describedby="vinegar-help"
+                />
+                <p id="vinegar-help" className="hint">
+                  {t(locale, "input.vinegar.help")}
+                </p>
+                {showFieldError("vinegar") && <p className="error">{showFieldError("vinegar")}</p>}
+              </div>
 
-      <div className="sr-only" role="status" aria-live="polite">
-        {buildAriaList(errorsForAnnouncement)}
-      </div>
+              <div className="field">
+                <label htmlFor="field-target">{t(locale, "input.target.label")}</label>
+                <input
+                  id="field-target"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  placeholder={t(locale, "placeholder.number")}
+                  value={inputs.target}
+                  onChange={onInputChange("target")}
+                  onBlur={onBlur("target")}
+                  aria-describedby="target-help"
+                />
+                <p id="target-help" className="hint">
+                  {t(locale, "input.target.help")}
+                </p>
+                {showFieldError("target") && <p className="error">{showFieldError("target")}</p>}
+              </div>
 
-      <section
-        className={`status-block status-${safetyMeta.tone}`}
-        aria-live="polite"
-        aria-label={t(locale, "status.title")}
-      >
-        <div className="status-head">
-          <h2>{t(locale, "status.title")}</h2>
-          <div className={`acid-pill ${targetValue ? "ready" : ""}`}>
-            <span>{t(locale, "input.target.label")}</span>
-            <strong>{targetValue ? `${targetValue} %` : "—"}</strong>
+              <div className="field">
+                <label htmlFor="field-ph">{t(locale, "input.ph.label")}</label>
+                <input
+                  id="field-ph"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  placeholder="4,50"
+                  value={inputs.ph}
+                  onChange={onInputChange("ph")}
+                  onBlur={onBlur("ph")}
+                />
+                {evaluation.phError && (
+                  <p className="error">{t(locale, `errors.${evaluation.phError}`)}</p>
+                )}
+              </div>
+            </fieldset>
+          </form>
+
+          <div className="sr-only" role="status" aria-live="polite">
+            {buildAriaList(errorsForAnnouncement)}
           </div>
         </div>
-        <p>{t(locale, safetyMeta.key)}</p>
-      </section>
 
-      <section className={`status-block status-${phMeta.tone}`} aria-label="pH">
-        <h2>pH</h2>
-        <p>{t(locale, phMeta.key)}</p>
-        {Number.isFinite(evaluation.phValue) && (
-          <p className="status-value">
-            pH: {formatNumber(evaluation.phValue, locale, 2)}
-          </p>
-        )}
-      </section>
+        <div className="marinade-pane">
+          <section
+            className={`status-block status-${safetyMeta.tone}`}
+            aria-live="polite"
+            aria-label={t(locale, "status.title")}
+          >
+            <div className="status-head">
+              <h2>{t(locale, "status.title")}</h2>
+              <div className={`acid-pill ${targetValue ? "ready" : ""}`}>
+                <span>{t(locale, "input.target.label")}</span>
+                <strong>{targetValue ? `${targetValue} %` : "—"}</strong>
+              </div>
+            </div>
+            <p>{t(locale, safetyMeta.key)}</p>
+          </section>
 
-      <section className="results-block" aria-live="polite" aria-label={t(locale, "accessibility.results")}>
-        <h2>{t(locale, "results.title")}</h2>
-        {mode === "jar" && <p>{t(locale, "results.none")}</p>}
-        {mode !== "jar" && formattedResult && (
-          <div className="results-grid">
-            <div>
-              <span className="result-label">{t(locale, "results.vinegar")}</span>
-              <strong>{formattedResult.vinegar}</strong>
-              <span className="result-suffix">{t(locale, "results.label.ml")}</span>
-            </div>
-            <div>
-              <span className="result-label">{t(locale, "results.water")}</span>
-              <strong>{formattedResult.water}</strong>
-              <span className="result-suffix">{t(locale, "results.label.ml")}</span>
-            </div>
-            <div>
-              <span className="result-label">{t(locale, "input.total.label")}</span>
-              <strong>{formattedResult.total}</strong>
-              <span className="result-suffix">{t(locale, "results.label.ml")}</span>
-            </div>
-            <div>
-              <span className="result-label">{t(locale, "input.vinegar.label")}</span>
-              <strong>{formattedResult.vinegarPct}</strong>
-              <span className="result-suffix">{t(locale, "results.label.percent")}</span>
-            </div>
+          <section className={`status-block status-${phMeta.tone}`} aria-label="pH">
+            <h2>pH</h2>
+            <p>{t(locale, phMeta.key)}</p>
+            {Number.isFinite(evaluation.phValue) && (
+              <p className="status-value">
+                pH: {formatNumber(evaluation.phValue, locale, 2)}
+              </p>
+            )}
+          </section>
+
+          <section className="results-block" aria-live="polite" aria-label={t(locale, "accessibility.results")}>
+            <h2>{t(locale, "results.title")}</h2>
+            {mode === "jar" && <p>{t(locale, "results.none")}</p>}
+            {mode !== "jar" && formattedResult && (
+              <div className="results-grid">
+                <div>
+                  <span className="result-label">{t(locale, "results.vinegar")}</span>
+                  <strong>{formattedResult.vinegar}</strong>
+                  <span className="result-suffix">{t(locale, "results.label.ml")}</span>
+                </div>
+                <div>
+                  <span className="result-label">{t(locale, "results.water")}</span>
+                  <strong>{formattedResult.water}</strong>
+                  <span className="result-suffix">{t(locale, "results.label.ml")}</span>
+                </div>
+                <div>
+                  <span className="result-label">{t(locale, "input.total.label")}</span>
+                  <strong>{formattedResult.total}</strong>
+                  <span className="result-suffix">{t(locale, "results.label.ml")}</span>
+                </div>
+                <div>
+                  <span className="result-label">{t(locale, "input.vinegar.label")}</span>
+                  <strong>{formattedResult.vinegarPct}</strong>
+                  <span className="result-suffix">{t(locale, "results.label.percent")}</span>
+                </div>
+              </div>
+            )}
+            {mode !== "jar" && !formattedResult && (
+              <p>{t(locale, "results.none")}</p>
+            )}
+            {mode !== "jar" && formattedResult && (
+              <p className={evaluation.sumOk ? "sum-ok" : "sum-bad"}>
+                {t(locale, evaluation.sumOk ? "results.sum.ok" : "results.sum.fail")}
+              </p>
+            )}
+            {evaluation.fieldErrors.generic && (
+              <p className="error">{t(locale, `errors.${evaluation.fieldErrors.generic}`)}</p>
+            )}
+          </section>
+
+          <div className="sr-only" role="status" aria-live="polite">
+            {resultAnnouncement}
           </div>
-        )}
-        {mode !== "jar" && !formattedResult && (
-          <p>{t(locale, "results.none")}</p>
-        )}
-        {mode !== "jar" && formattedResult && (
-          <p className={evaluation.sumOk ? "sum-ok" : "sum-bad"}>
-            {t(locale, evaluation.sumOk ? "results.sum.ok" : "results.sum.fail")}
-          </p>
-        )}
-        {evaluation.fieldErrors.generic && (
-          <p className="error">{t(locale, `errors.${evaluation.fieldErrors.generic}`)}</p>
-        )}
-      </section>
 
-      <div className="sr-only" role="status" aria-live="polite">
-        {resultAnnouncement}
+          <aside className="info-box">
+            <h2>{t(locale, "info.title")}</h2>
+            <ul>
+              <li>{t(locale, "info.ph")}</li>
+              <li>{t(locale, "info.hygiene")}</li>
+              <li>{t(locale, "info.storage")}</li>
+            </ul>
+          </aside>
+        </div>
       </div>
-
-      <aside className="info-box">
-        <h2>{t(locale, "info.title")}</h2>
-        <ul>
-          <li>{t(locale, "info.ph")}</li>
-          <li>{t(locale, "info.hygiene")}</li>
-          <li>{t(locale, "info.storage")}</li>
-        </ul>
-      </aside>
     </section>
   );
 }

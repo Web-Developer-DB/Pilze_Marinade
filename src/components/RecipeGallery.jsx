@@ -17,9 +17,11 @@ export default function RecipeGallery() {
   const recipes = useMemo(() => getRecipesForLocale(locale), [locale]);
   const tags = useMemo(() => buildTagList(recipes), [recipes]);
   const [activeTag, setActiveTag] = useState("all");
+  const [openRecipe, setOpenRecipe] = useState(null);
 
   useEffect(() => {
     setActiveTag("all");
+    setOpenRecipe(null);
   }, [locale]);
 
   const filtered = activeTag === "all" ? recipes : recipes.filter((recipe) => recipe.tags.includes(activeTag));
@@ -52,62 +54,86 @@ export default function RecipeGallery() {
       </div>
 
       <div className="recipe-grid">
-        {filtered.map((recipe) => (
-          <article key={recipe.id} className="recipe-card">
-            <header className="recipe-head">
-              <div>
-                <h3>{recipe.text.name}</h3>
-                <p>{recipe.text.intro}</p>
-              </div>
-              <dl className="recipe-meta">
+        {filtered.map((recipe) => {
+          const metaItems = [
+            {
+              id: "acid",
+              label: t(locale, "recipes.meta.acid"),
+              value: `${formatNumber(recipe.acidGoal, locale, 2)}${t(locale, "recipes.meta.percentSuffix")}`,
+            },
+            {
+              id: "rest",
+              label: t(locale, "recipes.meta.rest"),
+              value: `${recipe.restHours} ${t(locale, "recipes.meta.hoursSuffix")}`,
+            },
+            {
+              id: "tags",
+              label: t(locale, "recipes.meta.tags"),
+              value: recipe.tags.map((tag) => t(locale, `recipes.tags.${tag}`)).join(t(locale, "recipes.meta.tagSeparator")),
+            },
+          ];
+          return (
+            <article key={recipe.id} className="recipe-card">
+              <header className="recipe-head">
                 <div>
-                  <dt>{t(locale, "recipes.meta.acid")}</dt>
-                  <dd>
-                    {formatNumber(recipe.acidGoal, locale, 2)}
-                    {t(locale, "recipes.meta.percentSuffix")}
-                  </dd>
+                  <h3>{recipe.text.name}</h3>
+                  <p>{recipe.text.intro}</p>
                 </div>
-                <div>
-                  <dt>{t(locale, "recipes.meta.rest")}</dt>
-                  <dd>
-                    {recipe.restHours} {t(locale, "recipes.meta.hoursSuffix")}
-                  </dd>
-                </div>
-                <div>
-                  <dt>{t(locale, "recipes.meta.tags")}</dt>
-                  <dd>
-                    {recipe.tags
-                      .map((tag) => t(locale, `recipes.tags.${tag}`))
-                      .join(t(locale, "recipes.meta.tagSeparator"))}
-                  </dd>
-                </div>
-              </dl>
-            </header>
+                <ul className="recipe-meta">
+                  {metaItems.map((item) => (
+                    <li key={item.id}>
+                      <span className="meta-dot" aria-hidden="true">
+                        •
+                      </span>
+                      <div>
+                        <span className="meta-label">{item.label}</span>
+                        <span className="meta-value">{item.value}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </header>
 
-            <details className="recipe-details">
-              <summary>{t(locale, "recipes.details")}</summary>
-              <div className="recipe-body">
-                <div>
-                  <h4>{t(locale, "recipes.headers.ingredients")}</h4>
-                  <ul>
-                    {recipe.text.ingredients.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4>{t(locale, "recipes.headers.steps")}</h4>
-                  <ol>
-                    {recipe.text.steps.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
+              <div className="recipe-details">
+                <button type="button" onClick={() => setOpenRecipe(recipe)}>
+                  {t(locale, "recipes.details")}
+                </button>
               </div>
-            </details>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
+
+      {openRecipe && (
+        <div className="recipe-modal" role="dialog" aria-modal="true" aria-label={openRecipe.text.name}>
+          <div className="recipe-modal-backdrop" onClick={() => setOpenRecipe(null)} />
+          <div className="recipe-modal-panel">
+            <button className="recipe-modal-close" type="button" aria-label="Close" onClick={() => setOpenRecipe(null)}>
+              ×
+            </button>
+            <h3>{openRecipe.text.name}</h3>
+            <p>{openRecipe.text.intro}</p>
+            <div className="recipe-modal-body">
+              <div>
+                <h4>{t(locale, "recipes.headers.ingredients")}</h4>
+                <ul>
+                  {openRecipe.text.ingredients.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4>{t(locale, "recipes.headers.steps")}</h4>
+                <ol>
+                  {openRecipe.text.steps.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
