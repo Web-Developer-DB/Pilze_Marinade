@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { calcAcidVolumes, safetyStatus } from "../lib/calc.js";
 import { parseLocalizedNumber, formatNumber } from "../lib/number.js";
-import { supportedLocales, t } from "../lib/i18n.js";
+import { t } from "../lib/i18n.js";
 import { useLocale } from "../lib/locale-context.jsx";
 
 const ranges = {
@@ -43,7 +43,7 @@ function buildAriaList(list) {
 }
 
 export default function MarinadeForm() {
-  const { locale, setLocale } = useLocale();
+  const { locale } = useLocale();
   const [mode, setMode] = useState("calc"); // calc | jar
   const [inputs, setInputs] = useState({
     total: "",
@@ -137,7 +137,11 @@ export default function MarinadeForm() {
     };
   }, [inputs, mode]);
 
-  const localeOptions = supportedLocales();
+  const brandName = t(locale, "brand.name");
+  const modeGroupLabel = t(locale, "input.mode.label");
+  const inputLegend = t(locale, "input.legend");
+  const phPlaceholder = t(locale, "placeholder.ph");
+  const phPanelLabel = t(locale, "ph.panel.label");
 
   const onInputChange = (field) => (event) => {
     const value = event.target.value;
@@ -194,7 +198,7 @@ export default function MarinadeForm() {
     <section id="marinade-calculator" className="marinade-card" aria-labelledby="marinade-title">
       <header className="marinade-header">
         <div>
-          <p className="eyebrow">Pilze_Marinade</p>
+          <p className="eyebrow">{brandName}</p>
           <h1 id="marinade-title">{t(locale, "app.title")}</h1>
           <p className="lead">{t(locale, "app.lead")}</p>
         </div>
@@ -202,7 +206,7 @@ export default function MarinadeForm() {
 
       <div className="marinade-layout">
         <div className="marinade-pane">
-          <div className="mode-toggle" role="group" aria-label="Mode">
+          <div className="mode-toggle" role="group" aria-label={modeGroupLabel}>
             <label className={mode === "calc" ? "active" : ""}>
               <input
                 type="radio"
@@ -229,7 +233,7 @@ export default function MarinadeForm() {
 
           <form className="marinade-form" noValidate>
             <fieldset>
-              <legend className="sr-only">Inputs</legend>
+              <legend className="sr-only">{inputLegend}</legend>
               <div className="field">
                 <label htmlFor="field-total">{t(locale, "input.total.label")}</label>
                 <input
@@ -290,7 +294,7 @@ export default function MarinadeForm() {
                   id="field-ph"
                   inputMode="decimal"
                   autoComplete="off"
-                  placeholder="4,50"
+                  placeholder={phPlaceholder}
                   value={inputs.ph}
                   onChange={onInputChange("ph")}
                   onBlur={onBlur("ph")}
@@ -323,12 +327,12 @@ export default function MarinadeForm() {
             <p>{t(locale, safetyMeta.key)}</p>
           </section>
 
-          <section className={`status-block status-${phMeta.tone}`} aria-label="pH">
-            <h2>pH</h2>
+          <section className={`status-block status-${phMeta.tone}`} aria-label={phPanelLabel}>
+            <h2>{phPanelLabel}</h2>
             <p>{t(locale, phMeta.key)}</p>
             {Number.isFinite(evaluation.phValue) && (
               <p className="status-value">
-                pH: {formatNumber(evaluation.phValue, locale, 2)}
+                {phPanelLabel}: {formatNumber(evaluation.phValue, locale, 2)}
               </p>
             )}
           </section>

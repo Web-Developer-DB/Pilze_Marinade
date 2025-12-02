@@ -379,6 +379,31 @@
   }
 }
 
+@media (max-width: 720px){
+  .site-actions{
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .site-actions .header-locale,
+  .site-actions .controls,
+  .site-actions .menu-trigger{
+    flex-shrink:0;
+  }
+  .quick-links{
+    order:3;
+    flex:1 1 100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    padding-bottom:4px;
+    overflow-x:auto;
+  }
+  .quick-links a{
+    flex:0 1 auto;
+    white-space:nowrap;
+  }
+}
+
 @media (max-width: 540px){
   .site-header-inner{
     flex-wrap:wrap;
@@ -1138,7 +1163,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:24px;
+  padding: clamp(16px, 5vw, 32px);
 }
 
 .recipe-modal-backdrop{
@@ -1150,16 +1175,17 @@
 
 .recipe-modal-panel{
   position:relative;
-  max-width:min(720px, 90vw);
+  width: min(720px, calc(100vw - 32px));
   max-height:90vh;
   overflow:auto;
   background: color-mix(in oklab, var(--card), rgba(0,0,0,0.1));
   border-radius:24px;
   border:1px solid color-mix(in oklab, var(--glass-stroke), transparent 20%);
-  padding:32px;
+  padding: clamp(20px, 6vw, 32px);
   box-shadow:0 24px 60px rgba(0,0,0,0.35);
   display:grid;
   gap:18px;
+  margin:0 auto;
 }
 
 .recipe-modal-close{

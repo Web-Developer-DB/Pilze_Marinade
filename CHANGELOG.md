@@ -1,5 +1,12 @@
 # Changelog
 
+## 2025-12-02
+
+### Changed
+- Sämtliche Beschriftungen, Hero-Texte und Formularhinweise beziehen ihre Inhalte jetzt aus dem i18n-Layer, wodurch neue Sprachen einfacher ergänzt werden können.
+- Theme-Controls, Navigations-ARIA-Labels sowie die Rezept-Modaldialoge wurden vollständig lokalisiert.
+- Deutsche, englische und russische Texte (inklusive Meta-Description und Footer) wurden redigiert, um Grammatik, Terminologie und Stil zu vereinheitlichen.
+
 ## 2025-12-01
 
 ### Added

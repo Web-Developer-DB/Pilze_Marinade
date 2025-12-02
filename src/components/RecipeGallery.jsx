@@ -108,7 +108,12 @@ export default function RecipeGallery() {
         <div className="recipe-modal" role="dialog" aria-modal="true" aria-label={openRecipe.text.name}>
           <div className="recipe-modal-backdrop" onClick={() => setOpenRecipe(null)} />
           <div className="recipe-modal-panel">
-            <button className="recipe-modal-close" type="button" aria-label="Close" onClick={() => setOpenRecipe(null)}>
+            <button
+              className="recipe-modal-close"
+              type="button"
+              aria-label={t(locale, "recipes.modal.close")}
+              onClick={() => setOpenRecipe(null)}
+            >
               ×
             </button>
             <h3>{openRecipe.text.name}</h3>

@@ -50,7 +50,7 @@ export default function SiteHeader() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`site-header ${hidden ? "hidden" : ""}`} aria-label="Pilze_Marinade Navigation">
+    <header className={`site-header ${hidden ? "hidden" : ""}`} aria-label={t(locale, "nav.aria.site")}>
       <div className="site-header-inner">
         <a className="brand" href="#top">
           <span className="brand-badge" aria-hidden="true">
@@ -58,13 +58,13 @@ export default function SiteHeader() {
             <span className="mushroom-stem" />
           </span>
           <span className="brand-copy">
-            <strong>Pilze_Marinade</strong>
+            <strong>{t(locale, "brand.name")}</strong>
             <small>{t(locale, "nav.tagline")}</small>
           </span>
         </a>
 
         <div className="site-actions">
-          <nav className="site-nav" aria-label="Primär">
+          <nav className="site-nav" aria-label={t(locale, "nav.aria.primary")}>
             {navItems.map((item) => (
               <a key={item.key} href={item.href}>
                 {t(locale, item.key)}
@@ -90,10 +90,10 @@ export default function SiteHeader() {
       <div className={`site-drawer ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen}>
         <div className="drawer-overlay" onClick={closeMenu} />
         <div className="drawer-panel">
-          <button className="drawer-close" type="button" onClick={closeMenu} aria-label="Menü schließen">
+          <button className="drawer-close" type="button" onClick={closeMenu} aria-label={t(locale, "nav.aria.close")}>
             ×
           </button>
-          <nav className="drawer-nav" aria-label="Mobile Navigation" onClick={closeMenu}>
+          <nav className="drawer-nav" aria-label={t(locale, "nav.aria.drawer")} onClick={closeMenu}>
             {navItems.map((item) => (
               <a key={item.key} href={item.href}>
                 {t(locale, item.key)}
