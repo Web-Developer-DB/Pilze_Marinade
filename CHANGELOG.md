@@ -1,5 +1,10 @@
 # Changelog
 
+## 2025-12-04
+
+### Fixed
+- Viewport-Scaling auf Mobilgeräten komplett deaktiviert, sodass Pinch-Gesten und Doppel-Tap-Zoom das Layout nicht mehr verschieben.
+
 ## 2025-12-03
 
 ### Fixed
