@@ -1160,10 +1160,10 @@
   position:fixed;
   inset:0;
   z-index:70;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;
+  place-items:center;
   padding: clamp(16px, 5vw, 32px);
+  min-height:100vh;
 }
 
 .recipe-modal-backdrop{
@@ -1186,6 +1186,15 @@
   display:grid;
   gap:18px;
   margin:0 auto;
+}
+
+@supports (min-height: 100dvh){
+  .recipe-modal{
+    min-height:100dvh;
+  }
+  .recipe-modal-panel{
+    max-height: min(90vh, 90dvh);
+  }
 }
 
 .recipe-modal-close{

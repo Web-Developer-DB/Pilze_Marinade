@@ -24,6 +24,15 @@ export default function RecipeGallery() {
     setOpenRecipe(null);
   }, [locale]);
 
+  useEffect(() => {
+    if (!openRecipe) return undefined;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [openRecipe]);
+
   const filtered = activeTag === "all" ? recipes : recipes.filter((recipe) => recipe.tags.includes(activeTag));
 
   return (
