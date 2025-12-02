@@ -1,13 +1,18 @@
 
 *{ box-sizing:border-box }
 
+html{
+  height:100%;
+  scroll-behavior:smooth;
+}
+
 html, body{ height:100% }
 
 body{
   margin:0;
   min-height:100%;
   font-family: var(--font-sans);
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   line-height: var(--lh-base);
   color: var(--ink);
   background: var(--bg);
@@ -18,39 +23,41 @@ body{
   overflow-x:hidden;
   position:relative;
   isolation:isolate;
+  letter-spacing:-0.01em;
 }
 
 body::before,
 body::after{
   content:"";
   position:fixed;
-  inset:auto;
-  width:min(55vw, 520px);
-  height:min(55vh, 520px);
-  border-radius:50%;
-  filter: blur(60px);
-  opacity:.45;
+  inset:0;
   pointer-events:none;
   z-index:-1;
-  animation: ambientPulse 18s ease-in-out infinite;
 }
 
 body::before{
-  top:-14vh;
-  right:-12vw;
-  background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 55%, transparent), transparent 70%);
+  background:
+    radial-gradient(480px 420px at 14% 16%, color-mix(in oklab, var(--accent) 35%, transparent) 0%, transparent 55%),
+    radial-gradient(520px 460px at 82% 10%, color-mix(in oklab, var(--accent-2) 28%, transparent) 0%, transparent 60%),
+    radial-gradient(620px 520px at 50% 92%, color-mix(in oklab, var(--accent-3) 16%, transparent) 0%, transparent 65%);
+  filter: blur(18px);
+  opacity:.9;
+  mask: linear-gradient(180deg, #000 20%, transparent 85%);
+  animation: ambientPulse 22s ease-in-out infinite;
 }
 
 body::after{
-  bottom:-18vh;
-  left:-10vw;
-  animation-delay:-6s;
-  background: radial-gradient(circle at 60% 60%, color-mix(in oklab, var(--accent-2) 65%, transparent), transparent 70%);
+  background:
+    repeating-linear-gradient(90deg, color-mix(in oklab, var(--hair), transparent 4%) 0, color-mix(in oklab, var(--hair), transparent 4%) 1px, transparent 1px, transparent 42px),
+    repeating-linear-gradient(0deg, color-mix(in oklab, var(--hair), transparent 4%) 0, color-mix(in oklab, var(--hair), transparent 4%) 1px, transparent 1px, transparent 42px);
+  opacity:.15;
+  mask: linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%);
+  mix-blend-mode: screen;
 }
 
 @keyframes ambientPulse{
-  0%,100%{ transform: translate3d(0,0,0) scale(1); }
-  50%{ transform: translate3d(0,-12px,0) scale(1.05); }
+  0%,100%{ transform: translate3d(0,0,0) scale(1); filter: saturate(1); }
+  50%{ transform: translate3d(0,-16px,0) scale(1.04); filter: saturate(1.1); }
 }
 
 img{
@@ -66,11 +73,19 @@ h1, h2, h3{
   letter-spacing:-.015em;
   margin:.2rem 0 .35rem;
 }
-h1{ font-size: var(--fs-xxl); color: var(--accent); }
-h2{ font-size: var(--fs-xl); color: var(--accent-2); font-weight:700; }
-h3{ font-size: var(--fs-lg); color: var(--accent-3); font-weight:600; }
+h1{
+  font-size: var(--fs-xxl);
+  color: color-mix(in oklab, var(--accent-3), #ffffff 15%);
+}
+
+:root[data-scheme="light"] h1{
+  color: color-mix(in oklab, var(--accent-3), #ffffff 35%);
+}
+h2{ font-size: var(--fs-xl); color: var(--accent-heading); font-weight:700; }
+h3{ font-size: var(--fs-lg); color: var(--accent-subheading); font-weight:600; }
 
 p{ margin:.4rem 0 1rem; }
+small{ color: var(--muted); }
 
 code, pre, .formula{
   font-family: var(--font-mono);
@@ -104,7 +119,7 @@ a::after{
 }
 
 a:hover{
-  color: color-mix(in oklab, var(--accent), var(--ink) 35%);
+  color: color-mix(in oklab, var(--accent), var(--ink) 30%);
 }
 
 a:hover::after{

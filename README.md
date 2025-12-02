@@ -1,41 +1,64 @@
 
-# Pilze marinieren – React (Modern UI)
+# Pilze_Marinade – Mehrsprachiger Marinade-Rechner
 
-Aktualisierte Einmach-Anleitung mit einer modernen, animierten Oberfläche. Das Interface bringt klare Kontraste, Glas-Effekte und flüssige Reveal-Animationen, damit Rezepte und Sicherheitsangaben schnell erfassbar bleiben – egal ob mobil oder am Desktop.
+Pilze_Marinade ist ein modernes React-Interface zum sicheren Marinieren von Pilzen und Gemüse. Die App kombiniert ein präzises Säure-Berechnungstool mit einer kuratierten Rezeptgalerie, farbtheoretisch abgestimmten Themes, responsivem Layout sowie umfangreichen Accessibility-Maßnahmen (ARIA Live Regions, Tastaturfokus, Screenreader-Texte).
 
-## Highlights
-- **Hero-Redesign:** animierte Ambient-Light-Flächen, prägnante CTAs und Chips-Navigation.
-- **Theme Controls:** persistente Farbwelten (Erdtöne, Waldgrün, Kontrast) inklusive Light/Dark-Schalter.
-- **Säure-Rechner 2.0:** strukturierte Kartenansicht, Status-Pills für den pH-Wert, printbare Checkliste.
-- **Micro-Interactions:** Hover-, Orbit- und Scroll-Reveal-Effekte für Karten, Buttons und Badges.
-- **Barrierearme Typografie:** optimierte Abstände, Farbkontraste und responsiver Satz auf Basis von Vite + React 18.
+## Features
+- **Berechnung & Validierung** – mathematisch korrekte Volumenberechnung in Millilitern mit Summenprüfung, Fehlercodes, optionalem Jar-Modus und zweistufiger Sicherheitsampel (Ziel-Säure/Puffer pH).
+- **Mehrsprachig & formatbewusst** – alle Texte liegen in `de`, `en`, `ru`; Umschaltung verändert gleichzeitig Zahlformate dank `Intl.NumberFormat`.
+- **Theming & Color Scheme** – Theme-Dropdown plus Light/Dark Toggle greifen auf CSS-Custom-Properties zurück und passen Kontraste automatisch an.
+- **Navigation & Layout** – Sticky Header mit mobilem Drawer, Hero-Stats, Highlight Cards, Prozess- & FAQ-Blöcke sowie eine zweigeteilte Rechnerfläche.
+- **Rezeptgalerie** – 20 geprüfte russische Traditionsmarinaden mit Tag-Filter, Zutatenliste und Schritt-Anleitungen.
+- **Barrierefreiheit** – ARIA-Live-Ankündigungen, klare Fokuszustände, strukturierte Lists/Details, semantische Headings.
+- **Unit-Tests** – Jest-Suite prüft Rechenkern, Number-Parser, Rezeptdaten und i18n-Schlüssel.
 
 ## Installation & Entwicklung
 ```bash
 npm install
 npm run dev
 ```
+- Entwicklungsserver: http://localhost:5173  
+- Produktionsbuild: `npm run build`  
+- Vorschau-Build: `npm run preview`
 
-- Development-Server: http://localhost:5173
-- Production-Build: `npm run build` (Artefakte landen in `dist/`)
-- Preview-Build: `npm run preview`
+## Tests
+```bash
+npm test
+```
+Die Tests decken `calcAcidVolumes`, Parser/Formatter (`number.js`), Rezept-Mapping sowie die i18n-Metadaten ab.
 
-## Sicherheits-Update (Essigsäure)
+## Sicherheitshinweise
+- Für Lagerung bei Raumtemperatur Ziel-Säure ≥ 2,5 % und gemessener pH ≤ 4,6.
+- Saubere Arbeitsweise: Gläser sterilisieren, heiß abfüllen, dunkel und kühl lagern.
+- Bei geringerer Säure (< 2,5 %) ausschließlich gekühlt aufbewahren.
 
-Die App kalkuliert weiterhin mit **25 % Essigessenz** im Verhältnis **1,8 : 1** zu Zusatzwasser. Ziel-pH liegt bei **≤ 4,6**.
-
-### Modus & pH-Check
-- **Standard:** 2,5 % Essigsäure
-- **Robust:** 3,0 % oder 3,5 % (Schnellauswahl-Buttons)
-- **pH-Ampel:** OK ≤ 4,6 · Grenzfall 4,61 – 4,80 · Nicht OK > 4,8
-- **Print-Ansicht:** Prozess-Checkliste via Browser-Druck exportieren
-
-*Hinweis:* Für 1000 g vorgekochte Pilze + 700 g Wasser ergeben sich bei 3,5 % Ziel-Säure 161,2 g Essigessenz 25 % + 290,1 g Zusatzwasser.
-
-## Technik
-- Vite 5 · React 18
-- CSS mit modernen Farb-Mix-Funktionen (oklab), glassmorphische Layer, IntersectionObserver für Scroll-Reveal
-- Keine Server-Komponenten – vollständig clientseitig und offline nutzbar
+## Projektstruktur
+```
+src/
+├─ components/
+│  ├─ MarinadeForm.jsx
+│  ├─ RecipeGallery.jsx
+│  └─ SiteHeader.jsx
+├─ lib/
+│  ├─ calc.js
+│  ├─ i18n.js
+│  ├─ number.js
+│  └─ recipes.js
+├─ i18n/
+│  ├─ de.json
+│  ├─ en.json
+│  └─ ru.json
+└─ __tests__/
+   ├─ calc.spec.js
+   ├─ number.spec.js
+   ├─ recipes.spec.js
+   └─ i18n.spec.js
+```
 
 ## Lizenz
-MIT © 2024 – Siehe `LICENSE`
+MIT © 2024 – siehe `LICENSE`
+
+---
+
+Open-Source-Projekt von Dimitri B.  
+#### Quellcode und Issues: https://github.com/Web-Developer-DB/Pilze_Marinade

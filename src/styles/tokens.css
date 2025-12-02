@@ -1,90 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Fira+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Sono:wght@400;600&display=swap');
 
 :root{
-  --font-sans: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-mono: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: "DM Sans", "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: "Space Grotesk", "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-mono: "Sono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --fs-sm: .94rem;
-  --fs-base: 1rem;
-  --fs-md: 1.075rem;
-  --fs-lg: clamp(1.15rem, 3.5vw, 1.5rem);
-  --fs-xl: clamp(1.4rem, 4.5vw, 2.1rem);
-  --fs-xxl: clamp(1.8rem, 6.5vw, 2.7rem);
+  --fs-sm: .95rem;
+  --fs-base: 1.02rem;
+  --fs-md: 1.12rem;
+  --fs-lg: clamp(1.18rem, 3.2vw, 1.6rem);
+  --fs-xl: clamp(1.4rem, 4.2vw, 2.25rem);
+  --fs-xxl: clamp(1.9rem, 6.8vw, 3rem);
 
-  --lh-base: 1.7;
-  --lh-tight: 1.18;
+  --lh-base: 1.65;
+  --lh-tight: 1.14;
 
-  --radius-xl: 24px;
+  --radius-xl: 28px;
   --radius-lg: 20px;
   --radius-sm: 12px;
-  --shadow-sm: 0 12px 28px rgba(10,12,24,.22);
-  --shadow-md: 0 22px 48px rgba(6,8,22,.34);
-  --shadow-lg: 0 35px 82px rgba(5,7,20,.48);
-  --container: 1020px;
-  --glass-bg: rgba(40,42,54,.72);
-  --glass-stroke: rgba(189,147,249,.22);
+  --shadow-sm: 0 14px 30px rgba(5,10,25,.25);
+  --shadow-md: 0 24px 60px rgba(3,10,32,.35);
+  --shadow-lg: 0 38px 92px rgba(2,8,28,.48);
+  --container: 1180px;
+  --glass-bg: rgba(15,18,32,.68);
+  --glass-stroke: rgba(121,232,194,.28);
   --glass-blur: 18px;
 
-  --bg: #1e1f29;
-  --bg-grad: radial-gradient(1100px 720px at -10% -10%, rgba(189,147,249,.18) 0%, transparent 65%), radial-gradient(880px 640px at 120% 0%, rgba(139,233,253,.16) 0%, transparent 70%), linear-gradient(180deg, #1e1f29 0%, #161722 100%);
-  --bg-2: #2a2b3b;
-  --card: rgba(36,38,51,.88);
-  --ink: #f8f8f2;
-  --muted: #b2b7d1;
-  --accent: #bd93f9;
-  --accent-2: #8be9fd;
-  --accent-3: #ffb86c;
-  --ok: #50fa7b;
-  --warn: #ffb86c;
-  --danger: #ff5555;
-  --hair: rgba(248,248,242,.08);
+  --bg: #050910;
+  --bg-grad: radial-gradient(1200px 820px at 12% 10%, rgba(101,240,199,.21) 0%, transparent 60%), radial-gradient(960px 720px at 88% 8%, rgba(123,199,255,.2) 0%, transparent 65%), linear-gradient(180deg, #050910 0%, #0b1226 60%, #050910 100%);
+  --bg-2: #0e1424;
+  --card: rgba(15,19,34,.82);
+  --ink: #eef3ff;
+  --muted: #9fb3c6;
+  --accent: #5ef0c7;
+  --accent-2: #7bc7ff;
+  --accent-3: #f7c266;
+  --ok: #86f4b0;
+  --warn: #ffd479;
+  --danger: #ff8a9c;
+  --hair: rgba(238,243,255,.1);
+  --edge-glow: rgba(94,240,199,.28);
 
-  --chip-bg: color-mix(in oklab, var(--card), var(--accent) 10%);
-  --chip-ink: color-mix(in oklab, var(--ink) 85%, var(--accent) 15%);
+  --chip-bg: color-mix(in oklab, var(--card), var(--accent) 16%);
+  --chip-ink: color-mix(in oklab, var(--ink) 85%, var(--accent) 18%);
   --chip-stroke: color-mix(in oklab, var(--accent) 24%, var(--hair));
 
-  --nav-btn-bg: rgba(46,48,64,.86);
-  --nav-btn-ink: color-mix(in oklab, var(--ink), var(--accent) 28%);
-  --nav-btn-stroke: color-mix(in oklab, var(--accent) 26%, var(--hair));
+  --nav-btn-bg: rgba(20,26,44,.9);
+  --nav-btn-ink: color-mix(in oklab, var(--ink), var(--accent) 22%);
+  --nav-btn-stroke: color-mix(in oklab, var(--accent) 18%, var(--hair));
+
+  --text-muted: color-mix(in oklab, var(--muted), #fff 10%);
+  --text-soft: color-mix(in oklab, var(--muted), #fff 24%);
+  --accent-heading: var(--accent-2);
+  --accent-subheading: var(--accent-3);
+  --accent-text-strong: color-mix(in oklab, var(--accent), #fff 12%);
+  --accent-text-link: color-mix(in oklab, var(--accent), #fff 8%);
+  --pill-ink: color-mix(in oklab, var(--muted), var(--accent) 55%);
+  --nav-link-ink: color-mix(in oklab, var(--ink), var(--accent) 30%);
 }
 
 :root[data-scheme="light"]{
-  --bg: #f7f4ff;
-  --bg-grad: radial-gradient(1100px 760px at -10% -15%, rgba(196,174,255,.22) 0%, transparent 60%), radial-gradient(940px 620px at 110% 5%, rgba(144,202,248,.18) 0%, transparent 70%), linear-gradient(180deg, #f7f4ff 0%, #edf6ff 100%);
-  --bg-2: #eef0ff;
-  --card: rgba(255,255,255,.9);
-  --ink: #231e3a;
-  --muted: #65627a;
-  --hair: rgba(18,22,52,.08);
-  --glass-bg: rgba(255,255,255,.76);
-  --glass-stroke: rgba(38,64,120,.12);
+  --bg: #f4fbff;
+  --bg-grad: radial-gradient(1200px 780px at 8% 6%, rgba(94,240,199,.2) 0%, transparent 60%), radial-gradient(920px 740px at 90% 12%, rgba(123,199,255,.2) 0%, transparent 70%), linear-gradient(180deg, #f4fbff 0%, #eef4ff 70%, #f6fbff 100%);
+  --bg-2: #eaf1ff;
+  --card: rgba(255,255,255,.94);
+  --ink: #0f1320;
+  --muted: #5a6477;
+  --hair: rgba(15,19,32,.1);
+  --glass-bg: rgba(255,255,255,.78);
+  --glass-stroke: rgba(73,120,180,.16);
 
-  --chip-bg: color-mix(in oklab, #ffffff 70%, var(--accent) 15%);
-  --chip-ink: #231e3a;
-  --chip-stroke: rgba(68,84,160,.15);
+  --chip-bg: color-mix(in oklab, #ffffff 70%, var(--accent) 12%);
+  --chip-ink: #0f1320;
+  --chip-stroke: rgba(73,120,180,.15);
 
-  --nav-btn-bg: rgba(255,255,255,.88);
-  --nav-btn-ink: #2d2a46;
-  --nav-btn-stroke: rgba(68,84,160,.16);
+  --nav-btn-bg: rgba(255,255,255,.9);
+  --nav-btn-ink: #161c2e;
+  --nav-btn-stroke: rgba(73,120,180,.12);
+
+  --text-muted: color-mix(in oklab, var(--ink), var(--muted) 60%);
+  --text-soft: color-mix(in oklab, var(--ink), var(--muted) 45%);
+  --accent-heading: color-mix(in oklab, var(--ink), var(--accent-2) 40%);
+  --accent-subheading: color-mix(in oklab, var(--ink), var(--accent-3) 55%);
+  --accent-text-strong: color-mix(in oklab, var(--ink), var(--accent) 55%);
+  --accent-text-link: color-mix(in oklab, var(--ink), var(--accent) 45%);
+  --pill-ink: color-mix(in oklab, var(--ink), var(--accent) 60%);
+  --nav-link-ink: color-mix(in oklab, var(--ink), var(--accent) 65%);
 }
 
 :root[data-theme="erdtoene"]{
-  --accent:#ff9580;
-  --accent-2:#ffb86c;
-  --accent-3:#f8f47a;
+  --accent:#ffb58a;
+  --accent-2:#ffc073;
+  --accent-3:#ffd9a3;
 }
 
 :root[data-theme="waldgruen"]{
-  --accent:#5af78e;
-  --accent-2:#36c690;
-  --accent-3:#9df2c6;
+  --accent:#6df7b5;
+  --accent-2:#4fdc9b;
+  --accent-3:#a6f7d9;
 }
 
 :root[data-theme="kontrast"]{
-  --accent:#ff79c6;
-  --accent-2:#8be9fd;
-  --accent-3:#f1fa8c;
+  --accent:#5ef0c7;
+  --accent-2:#7bc7ff;
+  --accent-3:#f7c266;
 }
 
 :root{ color-scheme: dark; }
