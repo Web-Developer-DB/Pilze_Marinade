@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025-12-03
+
+### Fixed
+- Rezeptdetails-Modal sitzt nun auf Smartphones sofort mittig, passt sich der Displayhöhe an und sperrt den Seiten-Scroll, sodass kein horizontales Verschieben mehr nötig ist.
+- Header-Quicklinks und Burger-Menü bleiben auch auf schmalen Viewports vollständig erreichbar; horizontales Scrollen ist dort nicht mehr erforderlich.
+
 ## 2025-12-02
 
 ### Changed
