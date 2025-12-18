@@ -195,17 +195,17 @@ export default function MarinadeForm() {
     : "";
 
   const mobileSummary =
-    mode !== "jar" && (
+    mode !== "jar" && formattedResult ? (
       <div className="mobile-results" aria-live="polite">
         <div className="mobile-results-left">
           <div className="mobile-result">
             <span className="result-label">{t(locale, "results.vinegar")}</span>
-            <strong>{formattedResult?.vinegar ?? "—"}</strong>
+            <strong>{formattedResult.vinegar}</strong>
             <span className="result-suffix">{t(locale, "results.label.ml")}</span>
           </div>
           <div className="mobile-result">
             <span className="result-label">{t(locale, "results.water")}</span>
-            <strong>{formattedResult?.water ?? "—"}</strong>
+            <strong>{formattedResult.water}</strong>
             <span className="result-suffix">{t(locale, "results.label.ml")}</span>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default function MarinadeForm() {
           {t(locale, safetyMeta.key)}
         </div>
       </div>
-    );
+    ) : null;
 
   return (
     <section id="marinade-calculator" className="marinade-card" aria-labelledby="marinade-title">
