@@ -6,7 +6,7 @@ Pilze_Marinade ist ein modernes React-Interface zum sicheren Marinieren von Pilz
 ## Features
 - **Berechnung & Validierung** – mathematisch korrekte Volumenberechnung in Millilitern mit Summenprüfung, Fehlercodes, optionalem Jar-Modus und zweistufiger Sicherheitsampel (Ziel-Säure/Puffer pH).
 - **Mehrsprachig & formatbewusst** – alle Texte liegen in `de`, `en`, `ru`; Umschaltung verändert gleichzeitig Zahlformate dank `Intl.NumberFormat`.
-- **Theming & Color Scheme** – Theme-Dropdown plus Light/Dark Toggle greifen auf CSS-Custom-Properties zurück und passen Kontraste automatisch an.
+- **Theming & Color Scheme** – Systemorientiertes Light/Dark mit automatisch gesetztem Wald-Farbschema im Dunkeln; CSS-Custom-Properties regeln die Kontraste.
 - **Navigation & Layout** – Sticky Header mit mobilem Drawer, Hero-Stats, Highlight Cards, Prozess- & FAQ-Blöcke sowie eine zweigeteilte Rechnerfläche.
 - **Rezeptgalerie** – 20 geprüfte russische Traditionsmarinaden mit Tag-Filter, Zutatenliste und Schritt-Anleitungen.
 - **Barrierefreiheit** – ARIA-Live-Ankündigungen, klare Fokuszustände, strukturierte Lists/Details, semantische Headings.

@@ -139,6 +139,9 @@
   "theme.option.contrast": "Высокий контраст",
   "theme.toggle.title": "Переключить светлую/тёмную схему",
   "theme.toggle.aria": "Переключить цветовую схему",
+  "theme.scheme.system": "Системная",
   "theme.scheme.dark": "Тёмная",
-  "theme.scheme.light": "Светлая"
+  "theme.scheme.light": "Светлая",
+  "theme.locked.forest": "В тёмной схеме автоматически включается лесная палитра.",
+  "theme.locked.free": "В светлой схеме используется выбранная палитра."
 }

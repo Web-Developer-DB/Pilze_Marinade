@@ -139,6 +139,9 @@
   "theme.option.contrast": "High contrast",
   "theme.toggle.title": "Toggle light/dark",
   "theme.toggle.aria": "Toggle color scheme",
+  "theme.scheme.system": "System",
   "theme.scheme.dark": "Dark",
-  "theme.scheme.light": "Light"
+  "theme.scheme.light": "Light",
+  "theme.locked.forest": "Dark mode always leans into the forest palette.",
+  "theme.locked.free": "Light mode follows your selected palette."
 }

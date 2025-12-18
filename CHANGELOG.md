@@ -1,5 +1,15 @@
 # Changelog
 
+## 2025-12-05
+
+### Changed
+- Navigation überarbeitet: Desktop-Navi mit Icons, vereinheitlichte Drawer-Bedienung (50 %-Breite), rote Close-Taste, Flaggen-basierte Sprachwahl und kompaktere Header-Leiste.
+- Themes folgen nun strikt System-Hell/Dunkel mit automatischem Wald-Grund im Dunkelmodus; Kontraste von Hover/Fokus-States wurden für alle Schemen angehoben.
+- Sicherheitspanel und weitere Karten erhalten hellere Hintergründe und Textfarben für bessere Lesbarkeit in dunklen Themes.
+
+### Removed
+- Untere Persistent-Navigation zugunsten des vereinheitlichten Drawers/Headers.
+
 ## 2025-12-04
 
 ### Fixed

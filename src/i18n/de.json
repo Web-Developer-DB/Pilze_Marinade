@@ -139,6 +139,9 @@
   "theme.option.contrast": "Kontrastreich",
   "theme.toggle.title": "Hell/Dunkel umschalten",
   "theme.toggle.aria": "Farbschema umschalten",
+  "theme.scheme.system": "System",
   "theme.scheme.dark": "Dunkel",
-  "theme.scheme.light": "Hell"
+  "theme.scheme.light": "Hell",
+  "theme.locked.forest": "Dunkelmodus nutzt automatisch den Waldgrund.",
+  "theme.locked.free": "Hell nutzt dein gewähltes Design."
 }

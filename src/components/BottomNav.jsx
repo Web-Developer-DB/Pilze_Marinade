@@ -1,21 +1,60 @@
 
-import React from 'react'
+import React from "react";
+import { useLocale } from "../lib/locale-context.jsx";
+import { t } from "../lib/i18n.js";
 
-export default function BottomNav(){
+const navItems = [
+  { key: "nav.start", href: "#top", icon: "home" },
+  { key: "nav.calculator", href: "#marinade-calculator", icon: "beaker" },
+  { key: "nav.recipes", href: "#recipes", icon: "book" },
+  { key: "nav.safety", href: "#safety", icon: "shield" },
+];
+
+function Icon({ name }) {
+  switch (name) {
+    case "home":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5V21H5a1 1 0 0 1-1-1z" fill="currentColor" />
+        </svg>
+      );
+    case "beaker":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 4h8v2l-1 1v5.5c0 1.1-.3 2.2-.9 3.2l-.9 1.5a3 3 0 0 1-2.6 1.6h0a3 3 0 0 1-2.6-1.6l-.9-1.5A6 6 0 0 1 7 12.5V7L6 6V4z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M10 12.5h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      );
+    case "book":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5.5 4H18a1 1 0 0 1 1 1v14H7a1.5 1.5 0 0 0-1.5 1.5V4z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M7 4h9.5A1.5 1.5 0 0 1 18 5.5V20" fill="none" stroke="currentColor" strokeWidth="1.7" />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3 5 6v6c0 3.8 2.8 6.9 7 8 4.2-1.1 7-4.2 7-8V6z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+          <path d="M9.5 12.5 11 14l3.5-3.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+export default function BottomNav() {
+  const { locale } = useLocale();
+
   return (
-    <nav className="bottom-nav" aria-label="Schnelle Aktionen">
-      <a href="#marinade" aria-label="Zu den Marinaden">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3c4.5 5.8 7 9.2 7 12a7 7 0 1 1-14 0c0-2.8 2.5-6.2 7-12z" strokeWidth="1.7"/></svg>
-        Marinade
-      </a>
-      <a href="#pasteurisieren" aria-label="Zum Pasteurisieren">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="9" width="18" height="10" rx="2" strokeWidth="1.7"/><path d="M4 9V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" strokeWidth="1.7"/></svg>
-        Einkochen
-      </a>
-      <a href="#stuecklisten" aria-label="Zu den Stücklisten">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01" strokeWidth="1.7" /></svg>
-        Stücklisten
-      </a>
+    <nav className="bottom-nav" aria-label={t(locale, "nav.aria.primary")}>
+      {navItems.map((item) => (
+        <a key={item.key} href={item.href}>
+          <Icon name={item.icon} />
+          <span>{t(locale, item.key)}</span>
+        </a>
+      ))}
     </nav>
-  )
+  );
 }
