@@ -4,6 +4,11 @@ import { parseLocalizedNumber, formatNumber } from "../lib/number.js";
 import { t } from "../lib/i18n.js";
 import { useLocale } from "../lib/locale-context.jsx";
 
+// Hauptrechner:
+// - liest Eingaben als Strings ein (für Komma-Zahlen)
+// - validiert und berechnet in useMemo, damit UI schlank bleibt
+// - Lagerzweck-Presets setzen Ziel-Säure und zeigen Eignungsstatus
+// - kompakte Mobile-Resultate + volle Desktop-Resultate
 const ranges = {
   total: { min: 1, max: 20000 },
   vinegar: { min: 3, max: 25 },
@@ -11,6 +16,11 @@ const ranges = {
 };
 
 const fieldOrder = ["total", "vinegar", "target"];
+const PURPOSES = [
+  { id: "room", target: 2.6 },
+  { id: "fridge", target: 2.3 },
+  { id: "quick", target: 2.0 },
+];
 
 function getSafetyMeta(code) {
   switch (code) {
@@ -44,7 +54,6 @@ function buildAriaList(list) {
 
 export default function MarinadeForm() {
   const { locale } = useLocale();
-  const [mode, setMode] = useState("calc"); // calc | jar
   const [inputs, setInputs] = useState({
     total: "",
     vinegar: "",
@@ -52,8 +61,10 @@ export default function MarinadeForm() {
     ph: "",
   });
   const [touched, setTouched] = useState({});
+  const [purpose, setPurpose] = useState("room");
 
   const evaluation = useMemo(() => {
+    // Eingaben parsen + Fehler sammeln
     const parsed = {};
     const fieldErrors = {};
     const missing = new Set();
@@ -86,7 +97,7 @@ export default function MarinadeForm() {
     let sumOk = false;
 
     const blockingErrors = Object.values(fieldErrors).some(Boolean);
-    const readyForCalc = mode === "calc" && !blockingErrors;
+    const readyForCalc = !blockingErrors;
 
     if (readyForCalc) {
       try {
@@ -133,15 +144,14 @@ export default function MarinadeForm() {
       phError,
       phState,
       phValue,
-      readyForCalc,
     };
-  }, [inputs, mode]);
+  }, [inputs]);
 
   const brandName = t(locale, "brand.name");
-  const modeGroupLabel = t(locale, "input.mode.label");
   const inputLegend = t(locale, "input.legend");
   const phPlaceholder = t(locale, "placeholder.ph");
   const phPanelLabel = t(locale, "ph.panel.label");
+  const purposeLabel = t(locale, "purpose.label");
 
   const onInputChange = (field) => (event) => {
     const value = event.target.value;
@@ -194,8 +204,54 @@ export default function MarinadeForm() {
       ].join(" • ")
     : "";
 
+  const onPurposeSelect = (id) => {
+    setPurpose(id);
+    const selected = PURPOSES.find((p) => p.id === id);
+    if (selected) {
+      const formatted = formatNumber(selected.target, locale, 2);
+      setInputs((prev) => ({ ...prev, target: formatted }));
+      setTouched((prev) => ({ ...prev, target: true }));
+    }
+  };
+
+  const suitabilityMessage = () => {
+    if (!formattedResult) {
+      return t(locale, "purpose.status.wait");
+    }
+    if (evaluation.safety === "safe") {
+      return t(locale, "purpose.status.room");
+    }
+    if (evaluation.safety === "chilled") {
+      return t(locale, "purpose.status.fridge");
+    }
+    if (evaluation.safety === "unsafe") {
+      return t(locale, "purpose.status.unsafe");
+    }
+    return t(locale, "purpose.status.wait");
+  };
+
+  const mobileSummary = formattedResult ? (
+    <div className="mobile-results" aria-live="polite">
+      <div className="mobile-results-left">
+        <div className="mobile-result">
+          <span className="result-label">{t(locale, "results.vinegar")}</span>
+          <strong>{formattedResult.vinegar}</strong>
+          <span className="result-suffix">{t(locale, "results.label.ml")}</span>
+        </div>
+        <div className="mobile-result">
+          <span className="result-label">{t(locale, "results.water")}</span>
+          <strong>{formattedResult.water}</strong>
+          <span className="result-suffix">{t(locale, "results.label.ml")}</span>
+        </div>
+      </div>
+      <div className={`mobile-status status-${safetyMeta.tone}`}>
+        {t(locale, safetyMeta.key)}
+      </div>
+    </div>
+  ) : null;
+
   return (
-    <section id="marinade-calculator" className="marinade-card" aria-labelledby="marinade-title">
+    <section id="marinade-calculator" className="marinade-card reveal" aria-labelledby="marinade-title">
       <header className="marinade-header">
         <div>
           <p className="eyebrow">{brandName}</p>
@@ -206,30 +262,25 @@ export default function MarinadeForm() {
 
       <div className="marinade-layout">
         <div className="marinade-pane">
-          <div className="mode-toggle" role="group" aria-label={modeGroupLabel}>
-            <label className={mode === "calc" ? "active" : ""}>
-              <input
-                type="radio"
-                name="mode"
-                value="calc"
-                checked={mode === "calc"}
-                onChange={() => setMode("calc")}
-              />
-              {t(locale, "input.mode.calculated")}
-            </label>
-            <label className={mode === "jar" ? "active" : ""}>
-              <input
-                type="radio"
-                name="mode"
-                value="jar"
-                checked={mode === "jar"}
-                onChange={() => setMode("jar")}
-              />
-              {t(locale, "input.mode.jar")}
-            </label>
+          {mobileSummary}
+          <div className="purpose-switch" aria-label={purposeLabel} role="group">
+            {PURPOSES.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`purpose-pill ${purpose === item.id ? "active" : ""}`}
+                onClick={() => onPurposeSelect(item.id)}
+              >
+                <span className="pill-title">{t(locale, `purpose.${item.id}.title`)}</span>
+                <span className="pill-note">
+                  {t(locale, "purpose.reco")} {formatNumber(item.target, locale, 2)}%
+                </span>
+              </button>
+            ))}
           </div>
-
-          {mode === "jar" && <p className="mode-note">{t(locale, "input.mode.note")}</p>}
+          <div className="purpose-status" aria-live="polite">
+            <span>{suitabilityMessage()}</span>
+          </div>
 
           <form className="marinade-form" noValidate>
             <fieldset>
@@ -339,8 +390,7 @@ export default function MarinadeForm() {
 
           <section className="results-block" aria-live="polite" aria-label={t(locale, "accessibility.results")}>
             <h2>{t(locale, "results.title")}</h2>
-            {mode === "jar" && <p>{t(locale, "results.none")}</p>}
-            {mode !== "jar" && formattedResult && (
+            {formattedResult && (
               <div className="results-grid">
                 <div>
                   <span className="result-label">{t(locale, "results.vinegar")}</span>
@@ -364,10 +414,8 @@ export default function MarinadeForm() {
                 </div>
               </div>
             )}
-            {mode !== "jar" && !formattedResult && (
-              <p>{t(locale, "results.none")}</p>
-            )}
-            {mode !== "jar" && formattedResult && (
+            {!formattedResult && <p>{t(locale, "results.none")}</p>}
+            {formattedResult && (
               <p className={evaluation.sumOk ? "sum-ok" : "sum-bad"}>
                 {t(locale, evaluation.sumOk ? "results.sum.ok" : "results.sum.fail")}
               </p>

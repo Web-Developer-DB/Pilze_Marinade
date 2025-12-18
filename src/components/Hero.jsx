@@ -1,13 +1,22 @@
 
 import React from 'react'
 import ChipsNav from './ChipsNav.jsx'
+import { useLocale } from '../lib/locale-context.jsx'
+import { t } from '../lib/i18n.js'
 
 export default function Hero(){
+  const { locale } = useLocale();
+
   return (
-    <header className="hero reveal" aria-label="Titelbereich">
+    <header className="hero hero-photo reveal" aria-label="Titelbereich">
+      <div className="hero-brand-slab">
+        <p className="hero-eyebrow">{t(locale, "brand.name")}</p>
+        <h1>{t(locale, "app.title")}</h1>
+        <p className="hero-lead">{t(locale, "nav.tagline")}</p>
+      </div>
       <p className="hero-eyebrow">Saison 2024 · Leitfaden</p>
       <div className="hero-meta">
-        <h1>Pilze marinieren &amp; haltbar machen – Modern Edition</h1>
+        <h2>Pilze marinieren &amp; haltbar machen – Modern Edition</h2>
         <p className="subtitle">
           Naturfreundliches UI mit sanften Animationen, exakten Grammangaben und sicheren Einmach-Schritten – ohne Druck, ideal für Röhrlinge &amp; Lamellenpilze.
         </p>

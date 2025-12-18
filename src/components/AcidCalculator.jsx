@@ -13,6 +13,7 @@ import React, { useMemo, useState } from "react";
  * - Validierungslogik & numerische Kantenfälle robuster
  */
 
+// Liest Zahlen tolerant ein (mit Komma/Punkt, Tausenderpunkten, Leerzeichen).
 function parseNumberDE(value) {
   if (value == null) return NaN;
   const trimmed = String(value).trim();
@@ -56,6 +57,7 @@ function formatDecimal(n, digits = 1) {
 }
 
 export default function AcidCalculator() {
+  // Form-States; alle Inputs sind Strings, damit Kommas erlaubt bleiben.
   const [pilze, setPilze] = useState("1000");
   const [wasserFaktor, setWasserFaktor] = useState("0,7");
   const [ziel, setZiel] = useState("2,5"); // % Essigsäure im Gesamt-Sud
@@ -64,6 +66,7 @@ export default function AcidCalculator() {
   const [ph, setPh] = useState("");
 
   const results = useMemo(() => {
+    // Alle Konstanten an einer Stelle:
     const ratioZusatz = 1.8; // Zusatzwasser:Essenz
     const ratioMax = (0.25 / (1 + ratioZusatz)) * 100; // theoretisches Maximum in %
 
@@ -76,6 +79,7 @@ export default function AcidCalculator() {
     if (!Number.isFinite(parsedWasserFaktor) || parsedWasserFaktor <= 0) invalidInputs.push('wasserFaktor');
     if (!Number.isFinite(parsedZiel) || parsedZiel <= 0) invalidInputs.push('ziel');
 
+    // Falls Eingaben fehlen oder ≤ 0 → Abbruch mit Fehlgrund.
     if (invalidInputs.length) {
       return {
         valid: false,
@@ -92,6 +96,7 @@ export default function AcidCalculator() {
     const wasser = parsedPilze * parsedWasserFaktor; // g
     const A = 0.25; // 25 % Essigessenz
     const r = parsedZiel / 100;
+    // Nenner prüfen: darf nicht ≤ 0 werden, sonst ist Ziel% zu hoch.
     const denom = A - r * (1 + ratioZusatz);
 
     if (denom <= 0) {
@@ -111,6 +116,7 @@ export default function AcidCalculator() {
     const zusatz = ratioZusatz * e;
     const total = wasser + e + zusatz;
 
+    // Sicherheitsnetz: keine negativen oder unendlichen Ergebnisse akzeptieren.
     if (!Number.isFinite(e) || e < 0 || !Number.isFinite(zusatz) || zusatz < 0 || !Number.isFinite(total) || total <= 0) {
       return {
         valid: false,
@@ -136,6 +142,7 @@ export default function AcidCalculator() {
     };
   }, [pilze, wasserFaktor, ziel]);
 
+  // Einfache pH-Ampel aus Nutzerwert.
   const phStatus = useMemo(() => {
     const v = parseNumberDE(ph);
     if (!Number.isFinite(v)) return { label: "—", state: "neutral" };
@@ -144,8 +151,10 @@ export default function AcidCalculator() {
     return { label: "Nicht OK (> 4,8)", state: "bad" };
   }, [ph]);
 
+  // Für Validierungs-Styles (rote Ränder).
   const invalidKeys = useMemo(() => new Set(results.invalidInputs || []), [results.invalidInputs]);
 
+  // Einheitliche Formatierung der Resultate.
   const formatResult = (value) => (Number.isFinite(value) ? formatInt(value) : "—");
 
   const fieldLabels = {

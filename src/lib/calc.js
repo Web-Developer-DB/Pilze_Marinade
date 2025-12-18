@@ -13,6 +13,7 @@ export function calcAcidVolumes({ totalMl, targetPct, vinegarPct }) {
   if (!Number.isFinite(vinegarPct) || vinegarPct <= 0) throw new Error("ERR_STRENGTH");
   if (targetPct > vinegarPct) throw new Error("ERR_RATIO");
 
+  // Anteil Essig = Ziel% / Essigstärke; Rest = Wasser.
   const vinegarMl = (targetPct / vinegarPct) * totalMl;
   const waterMl = Math.max(0, totalMl - vinegarMl);
   return { vinegarMl, waterMl };

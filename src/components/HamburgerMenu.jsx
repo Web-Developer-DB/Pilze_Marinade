@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react'
-import ThemeControls from './ThemeControls.jsx'
 
 export default function HamburgerMenu(){
   const [open, setOpen] = useState(false)
@@ -39,9 +38,6 @@ export default function HamburgerMenu(){
             <a href="#stuecklisten">Stücklisten</a>
             <a href="#galerie">Galerie</a>
           </nav>
-          <div style={{ marginTop: '8px' }}>
-            <ThemeControls />
-          </div>
         </aside>
       </div>
     </>

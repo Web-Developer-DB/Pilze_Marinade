@@ -1,70 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLocale } from "../lib/locale-context.jsx";
 import { t } from "../lib/i18n.js";
 
-const THEMES = [
-  { value: "erdtoene", labelKey: "theme.option.earth" },
-  { value: "waldgruen", labelKey: "theme.option.forest" },
-  { value: "kontrast", labelKey: "theme.option.contrast" },
+const SCHEMES = [
+  { value: "system", icon: "🖥️", labelKey: "theme.scheme.system" },
+  { value: "light", icon: "☀️", labelKey: "theme.scheme.light" },
+  { value: "dark", icon: "🌙", labelKey: "theme.scheme.dark" },
 ];
 
-export default function ThemeControls() {
+// Hält die Scheme-Präferenz (System/Light/Dark) und setzt Theme-CSS-Variablen.
+// Light/Dark erzwingen aktuell immer das Waldgrün-Theme.
+export default function ThemeControls({ renderButton = true }) {
   const { locale } = useLocale();
-  const [theme, setTheme] = useState("erdtoene");
-  const [scheme, setScheme] = useState("dark");
+  const [schemePreference, setSchemePreference] = useState("system");
+  const [prefersDark, setPrefersDark] = useState(false);
 
   useEffect(() => {
-    const themeValue =
-      document.documentElement.getAttribute("data-theme") ||
-      localStorage.getItem("theme") ||
-      "erdtoene";
-    const schemeValue =
-      document.documentElement.getAttribute("data-scheme") ||
-      localStorage.getItem("scheme") ||
-      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    setTheme(themeValue);
-    setScheme(schemeValue);
+    const media = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+    setPrefersDark(media?.matches ?? false);
+
+    const onMediaChange = (event) => setPrefersDark(event.matches);
+    media?.addEventListener("change", onMediaChange);
+
+    const root = document.documentElement;
+    const storedScheme =
+      localStorage.getItem("schemePreference") || localStorage.getItem("scheme") || root.getAttribute("data-scheme");
+
+    if (storedScheme) {
+      setSchemePreference(storedScheme);
+    }
+
+    return () => media?.removeEventListener("change", onMediaChange);
   }, []);
 
+  const resolvedScheme = useMemo(
+    () => (schemePreference === "system" ? (prefersDark ? "dark" : "light") : schemePreference),
+    [prefersDark, schemePreference],
+  );
+
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    const root = document.documentElement;
+    const theme = "waldgruen";
+
+    root.setAttribute("data-theme", theme);
+    root.setAttribute("data-scheme", resolvedScheme);
     localStorage.setItem("theme", theme);
-  }, [theme]);
+    localStorage.setItem("schemePreference", schemePreference);
+  }, [resolvedScheme, schemePreference]);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-scheme", scheme);
-    localStorage.setItem("scheme", scheme);
-  }, [scheme]);
-
-  const themeTitle = t(locale, "theme.select.title");
-  const themeLabel = t(locale, "theme.select.label");
-  const schemeToggleTitle = t(locale, "theme.toggle.title");
   const schemeToggleAria = t(locale, "theme.toggle.aria");
-  const schemeTargetLabel = scheme === "light" ? t(locale, "theme.scheme.dark") : t(locale, "theme.scheme.light");
-  const schemeIcon = scheme === "light" ? "🌙" : "☀️";
+  const activeScheme = SCHEMES.find((option) => option.value === schemePreference) || SCHEMES[0];
+  const resolvedLabel = t(locale, resolvedScheme === "dark" ? "theme.scheme.dark" : "theme.scheme.light");
+
+  const toggleScheme = () => {
+    if (schemePreference === "system") {
+      setSchemePreference(resolvedScheme === "dark" ? "light" : "dark");
+    } else {
+      setSchemePreference("system");
+    }
+  };
+
+  if (!renderButton) {
+    return null;
+  }
 
   return (
-    <div className="controls">
-      <span className="select" title={themeTitle}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6.5 20l2-7L3 9h7l2-7z" strokeWidth="1.3" />
-        </svg>
-        <label htmlFor="theme" className="sr-only">
-          {themeLabel}
-        </label>
-        <select id="theme" value={theme} onChange={(event) => setTheme(event.target.value)} aria-label={themeLabel}>
-          {THEMES.map((option) => (
-            <option key={option.value} value={option.value}>
-              {t(locale, option.labelKey)}
-            </option>
-          ))}
-        </select>
-      </span>
-
-      <span className="toggle" title={schemeToggleTitle}>
-        <button type="button" onClick={() => setScheme((prev) => (prev === "light" ? "dark" : "light"))} aria-label={schemeToggleAria}>
-          {`${schemeIcon} ${schemeTargetLabel}`}
-        </button>
+    <div className="scheme-toggle">
+      <button
+        type="button"
+        onClick={toggleScheme}
+        aria-label={`${schemeToggleAria} - ${t(locale, activeScheme.labelKey)}`}
+      >
+        <span className="pill-icon" aria-hidden="true">
+          {activeScheme.icon}
+        </span>
+        <span className="pill-text">
+          {t(locale, activeScheme.labelKey)}
+          <small>{schemePreference === "system" ? resolvedLabel : t(locale, "theme.scheme.system")}</small>
+        </span>
+      </button>
+      <span className="scheme-note" aria-live="polite">
+        {resolvedScheme === "dark" ? t(locale, "theme.locked.forest") : t(locale, "theme.locked.free")}
       </span>
     </div>
   );
