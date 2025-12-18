@@ -1,6 +1,6 @@
 {
   "app.title": "Pilze-Marinade-Rechner",
-  "app.lead": "Berechne jede Essigsudkombination mit garantierter Säurekonzentration.",
+  "app.lead": "Berechne jede Essigsud-Kombination mit verlässlicher Säurekonzentration.",
   "brand.name": "Pilze_Marinade",
   "locale.de": "Deutsch",
   "locale.en": "Englisch",
@@ -60,7 +60,7 @@
   "footer.credits": "Open-Source-Projekt von Dimitri B.",
   "footer.source": "Quellcode & Issues: https://github.com/Web-Developer-DB/Pilze_Marinade",
   "input.total.label": "Gesamtvolumen (ml)",
-  "input.total.help": "Erlaubt sind Werte zwischen 1 und 20\u202f000 Milliliter.",
+  "input.total.help": "Erlaubt sind Werte zwischen 1 und 20\u202f000 Millilitern.",
   "input.vinegar.label": "Essigstärke (%)",
   "input.vinegar.help": "Gib die Prozentangabe deines Essigs an (3–25 %).",
   "input.target.label": "Ziel-Säure (%)",
@@ -149,6 +149,6 @@
   "theme.scheme.system": "System",
   "theme.scheme.dark": "Dunkel",
   "theme.scheme.light": "Hell",
-  "theme.locked.forest": "Dunkelmodus nutzt automatisch den Waldgrund.",
+  "theme.locked.forest": "Dunkelmodus nutzt automatisch die Waldgrün-Palette.",
   "theme.locked.free": "Hell nutzt dein gewähltes Design."
 }
