@@ -623,6 +623,31 @@
 .sum-ok{ color: var(--ok); font-weight:700; }
 .sum-bad{ color: var(--danger); font-weight:700; }
 
+.mobile-results{ display:none; }
+
+.mobile-results .mobile-results-left{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:8px;
+}
+
+.mobile-results .mobile-result{
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid color-mix(in oklab, var(--hair), transparent 16%);
+  background: color-mix(in oklab, var(--card), var(--bg-2) 16%);
+  display:grid;
+  gap:4px;
+}
+
+.mobile-status{
+  padding:10px;
+  border-radius:10px;
+  font-weight:700;
+  border:1px solid color-mix(in oklab, var(--hair), transparent 16%);
+  background: color-mix(in oklab, var(--card), var(--bg-2) 18%);
+}
+
 .info-box{
   border-radius:10px;
   padding:11px;
@@ -1088,6 +1113,38 @@
 /* Responsive */
 @media (max-width: 720px){
   .quick-links{ display:none; }
+}
+
+@media (max-width: 640px){
+  .marinade-card{
+    padding:10px;
+    gap:12px;
+    position:relative;
+  }
+  .marinade-header .lead{ display:none; }
+  .marinade-header h1{ font-size: clamp(1.2rem, 5vw, 1.4rem); }
+  .marinade-layout{ gap:10px; }
+  .marinade-pane{
+    padding:10px;
+    gap:10px;
+  }
+  .marinade-pane .field .hint{ display:none; }
+  .mobile-results{
+    display:grid;
+    position:sticky;
+    top:6px;
+    z-index:2;
+    gap:8px;
+    background: color-mix(in oklab, var(--card), var(--bg-2) 12%);
+    padding:8px;
+    border-radius:12px;
+    border:1px solid color-mix(in oklab, var(--hair), transparent 20%);
+    box-shadow: 0 8px 18px rgba(0,0,0,.18);
+  }
+  .status-block,
+  .results-block,
+  .info-box{ display:none; }
+  .marinade-form .field{ margin-bottom:10px; }
 }
 
 @media (min-width: 640px){

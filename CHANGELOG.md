@@ -6,6 +6,7 @@
 - Navigation überarbeitet: Desktop-Navi mit Icons, vereinheitlichte Drawer-Bedienung (50 %-Breite), rote Close-Taste, Flaggen-basierte Sprachwahl und kompaktere Header-Leiste.
 - Themes folgen nun strikt System-Hell/Dunkel mit automatischem Wald-Grund im Dunkelmodus; Kontraste von Hover/Fokus-States wurden für alle Schemen angehoben.
 - Sicherheitspanel und weitere Karten erhalten hellere Hintergründe und Textfarben für bessere Lesbarkeit in dunklen Themes.
+- Rechner im Kompaktmodus für Smartphones: Inputs, Modus-Umschalter und Ergebnisse sind ohne Scrollen sichtbar, Desktop-Resultate/Status werden auf kleinen Displays ausgeblendet.
 
 ### Removed
 - Untere Persistent-Navigation zugunsten des vereinheitlichten Drawers/Headers.
