@@ -4,6 +4,11 @@ import { parseLocalizedNumber, formatNumber } from "../lib/number.js";
 import { t } from "../lib/i18n.js";
 import { useLocale } from "../lib/locale-context.jsx";
 
+// Hauptrechner:
+// - liest Eingaben als Strings ein (für Komma-Zahlen)
+// - validiert und berechnet in useMemo, damit UI schlank bleibt
+// - Lagerzweck-Presets setzen Ziel-Säure und zeigen Eignungsstatus
+// - kompakte Mobile-Resultate + volle Desktop-Resultate
 const ranges = {
   total: { min: 1, max: 20000 },
   vinegar: { min: 3, max: 25 },
@@ -59,6 +64,7 @@ export default function MarinadeForm() {
   const [purpose, setPurpose] = useState("room");
 
   const evaluation = useMemo(() => {
+    // Eingaben parsen + Fehler sammeln
     const parsed = {};
     const fieldErrors = {};
     const missing = new Set();

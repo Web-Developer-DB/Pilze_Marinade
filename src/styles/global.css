@@ -52,11 +52,14 @@ h1, h2, h3{
 }
 h1{
   font-size: var(--fs-xxl);
-  color: color-mix(in oklab, var(--accent-3), #ffffff 15%);
+  color: color-mix(in oklab, var(--accent), #000 40%);
 }
 
 :root[data-scheme="light"] h1{
-  color: color-mix(in oklab, var(--accent-3), #ffffff 35%);
+  color: color-mix(in oklab, var(--accent), #000 50%);
+}
+:root[data-scheme="dark"] h1{
+  color: color-mix(in oklab, var(--accent-3), #ffffff 15%);
 }
 h2{ font-size: var(--fs-xl); color: var(--accent-heading); font-weight:700; }
 h3{ font-size: var(--fs-lg); color: var(--accent-subheading); font-weight:600; }

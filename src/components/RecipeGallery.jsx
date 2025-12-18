@@ -4,6 +4,11 @@ import { getRecipesForLocale } from "../lib/recipes.js";
 import { t } from "../lib/i18n.js";
 import { formatNumber } from "../lib/number.js";
 
+// Rezeptliste:
+// - Tags filtern die Liste
+// - Cards öffnen das Modal per Click/Enter/Space
+// - Modal sperrt Scroll und zeigt Zutaten/Schritte
+
 function buildTagList(recipes) {
   const set = new Set();
   recipes.forEach((recipe) => {

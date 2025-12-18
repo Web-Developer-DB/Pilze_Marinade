@@ -18,6 +18,7 @@ export function parseLocalizedNumber(str) {
   const hasComma = s.includes(",");
   const hasDot = s.includes(".");
 
+  // Wenn sowohl Komma als auch Punkt: letzte Position entscheidet, was Dezimaltrenner ist.
   if (hasComma && hasDot) {
     const lastComma = s.lastIndexOf(",");
     const lastDot = s.lastIndexOf(".");

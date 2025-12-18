@@ -96,16 +96,21 @@
   --nav-link-ink: color-mix(in oklab, var(--ink), var(--accent) 12%);
 }
 
-:root[data-theme="erdtoene"]{
-  --accent:#d77a3a;
-  --accent-2:#4f7b5c;
-  --accent-3:#f2c48c;
+:root[data-scheme="light"]{
+  --accent:#166a3b;
+  --accent-2:#125188;
+  --accent-3:#1f9e60;
+  --accent-heading: var(--accent);
+  --accent-subheading: var(--accent-2);
+  --accent-text-strong: color-mix(in oklab, var(--accent), #000 12%);
+  --accent-text-link: color-mix(in oklab, var(--accent), #000 10%);
+  --nav-link-ink: color-mix(in oklab, var(--ink), var(--accent) 12%);
 }
 
 :root[data-theme="waldgruen"]{
-  --accent:#2f9e44;
-  --accent-2:#1f7ed6;
-  --accent-3:#63e6be;
+  --accent:#166a3b;
+  --accent-2:#125188;
+  --accent-3:#1f9e60;
 }
 
 :root[data-theme="kontrast"]{

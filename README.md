@@ -1,64 +1,114 @@
+# Pilze_Marinade – Multilingualer Säurerechner & Rezepte
 
-# Pilze_Marinade – Mehrsprachiger Marinade-Rechner
+Modernes React-Front‑End für sichere Pilzmarinaden. Der Rechner prüft Eingaben, berechnet Essig/Wasser‑Mengen, zeigt Eignung je Lagerzweck und liefert 20 geprüfte Rezepte. Mehrsprachig (DE/EN/RU), systembasiertes Theming (Hell/Dunkel) und mobile-first Layout.
 
-Pilze_Marinade ist ein modernes React-Interface zum sicheren Marinieren von Pilzen und Gemüse. Die App kombiniert ein präzises Säure-Berechnungstool mit einer kuratierten Rezeptgalerie, farbtheoretisch abgestimmten Themes, responsivem Layout sowie umfangreichen Accessibility-Maßnahmen (ARIA Live Regions, Tastaturfokus, Screenreader-Texte).
+> Zielgruppe: Junior-Entwickler. Jede Sektion erklärt, wo du was findest und wie du etwas anpasst.
+
+## Inhalt
+- [Features](#features)
+- [Schnellstart](#schnellstart)
+- [Scripts](#scripts)
+- [Projektstruktur](#projektstruktur)
+- [Wesentliche Komponenten](#wesentliche-komponenten)
+- [Styling & Farben](#styling--farben)
+- [Internationalisierung](#internationalisierung)
+- [Theming](#theming)
+- [Berechnung & Daten](#berechnung--daten)
+- [Tests](#tests)
+- [How-To: Änderungen vornehmen](#how-to-änderungen-vornehmen)
+- [Troubleshooting](#troubleshooting)
+- [Lizenz](#lizenz)
 
 ## Features
-- **Berechnung & Validierung** – mathematisch korrekte Volumenberechnung in Millilitern mit Summenprüfung, Fehlercodes, optionalem Jar-Modus und zweistufiger Sicherheitsampel (Ziel-Säure/Puffer pH).
-- **Mehrsprachig & formatbewusst** – alle Texte liegen in `de`, `en`, `ru`; Umschaltung verändert gleichzeitig Zahlformate dank `Intl.NumberFormat`.
-- **Theming & Color Scheme** – Systemorientiertes Light/Dark mit automatisch gesetztem Wald-Farbschema im Dunkeln; CSS-Custom-Properties regeln die Kontraste.
-- **Navigation & Layout** – Sticky Header mit mobilem Drawer, Hero-Stats, Highlight Cards, Prozess- & FAQ-Blöcke sowie eine zweigeteilte Rechnerfläche.
-- **Rezeptgalerie** – 20 geprüfte russische Traditionsmarinaden mit Tag-Filter, Zutatenliste und Schritt-Anleitungen.
-- **Barrierefreiheit** – ARIA-Live-Ankündigungen, klare Fokuszustände, strukturierte Lists/Details, semantische Headings.
-- **Unit-Tests** – Jest-Suite prüft Rechenkern, Number-Parser, Rezeptdaten und i18n-Schlüssel.
+- **Säure-Rechner**: Plausibilitäts-Checks, Summenprüfung, pH-Indikator, Fehlertexte.
+- **Lagerzweck-Presets**: Raumtemperatur / Kühllagerung / Kurzfristig setzen Ziel-Säure, zeigen Eignung.
+- **Rezepte**: 20 geprüfte russische Marinaden, Modal-Details, mobil per Card-Tap/Enter/Space öffnend.
+- **Mehrsprachig**: Deutsch, Englisch, Russisch (Texte + Zahlformat).
+- **Theming**: Systembasiert, manuell umschaltbar; Hell/Dunkel nutzen Waldgrün-Palette.
+- **Mobile-Optimiert**: Kompakter Rechner, Sticky-Ergebnisleiste nur bei Resultaten, Drawer-Navigation.
+- **Accessibility**: ARIA-Live für Fehler/Resultate, Tastatursteuerung, sichtbare Fokuszustände.
 
-## Installation & Entwicklung
+## Schnellstart
 ```bash
 npm install
-npm run dev
+npm run dev    # http://localhost:5173
 ```
-- Entwicklungsserver: http://localhost:5173  
-- Produktionsbuild: `npm run build`  
-- Vorschau-Build: `npm run preview`
-
-## Tests
+Prod-Build:
 ```bash
-npm test
+npm run build
+npm run preview
 ```
-Die Tests decken `calcAcidVolumes`, Parser/Formatter (`number.js`), Rezept-Mapping sowie die i18n-Metadaten ab.
 
-## Sicherheitshinweise
-- Für Lagerung bei Raumtemperatur Ziel-Säure ≥ 2,5 % und gemessener pH ≤ 4,6.
-- Saubere Arbeitsweise: Gläser sterilisieren, heiß abfüllen, dunkel und kühl lagern.
-- Bei geringerer Säure (< 2,5 %) ausschließlich gekühlt aufbewahren.
+## Scripts
+- `npm run dev` – Vite Dev-Server
+- `npm run build` – Production-Bundle
+- `npm run preview` – Serviert das Build lokal
+- `npm test` – Jest-Suite
 
 ## Projektstruktur
 ```
+public/
+  Hero.jpeg            # aktuelles Hero-/Logo-Bild
 src/
-├─ components/
-│  ├─ MarinadeForm.jsx
-│  ├─ RecipeGallery.jsx
-│  └─ SiteHeader.jsx
-├─ lib/
-│  ├─ calc.js
-│  ├─ i18n.js
-│  ├─ number.js
-│  └─ recipes.js
-├─ i18n/
-│  ├─ de.json
-│  ├─ en.json
-│  └─ ru.json
-└─ __tests__/
-   ├─ calc.spec.js
-   ├─ number.spec.js
-   ├─ recipes.spec.js
-   └─ i18n.spec.js
+  components/          # UI-Bausteine
+  hooks/               # z.B. useScrollReveal
+  i18n/                # Sprachdateien (de/en/ru)
+  lib/                 # calc, number, recipes, i18n helper
+  styles/              # tokens, global, app, animations
+  main.jsx             # React-Entry, bindet App
 ```
 
+## Wesentliche Komponenten
+- `SiteHeader.jsx`: Navigation, Drawer, Locale-Switcher, Theme-Toggle im Drawer.
+- `Hero.jsx`: Intro mit Brand-Slab, Hintergrundbild (`public/Hero.jpeg`), CTA-Buttons.
+- `MarinadeForm.jsx`: Säure-Rechner, Validierung, Lagerzweck-Presets, Eignungsstatus, pH-Hinweis.
+- `RecipeGallery.jsx`: Filterbare Rezepte, Modal mit Zutaten/Schritten; Cards öffnen Modal per Click/Keyboard.
+- `ThemeControls.jsx`: System/Light/Dark-Umschalter, setzt `data-scheme` + `data-theme` auf `waldgruen`.
+- `useScrollReveal.js`: Fügt `.in` auf `.reveal`-Elemente beim Scroll hinzu (IntersectionObserver).
+
+## Styling & Farben
+- **Tokens** (`styles/tokens.css`): Enthält Farbvariablen, Schriftgrößen, Schatten. Light/Dark definieren eigene Paletten. Aktuell erzwingt auch Light die Waldgrün-Palette (kein Orange mehr).
+- **Global** (`styles/global.css`): Basis-Typografie, Body-Hintergründe, Standardfarben für h1/h2/h3.
+- **App** (`styles/app.css`): Komponenten-Layout, Drawer, Buttons, Hero-Overlays, Rechner-Kompaktmodus.
+- **Animations** (`styles/animations.css`): Scroll-Reveal-Animationen, reduziert bei `prefers-reduced-motion`.
+
+## Internationalisierung
+- Dateien: `src/i18n/de.json`, `en.json`, `ru.json`.
+- Helper: `t(locale, key)` aus `src/lib/i18n.js`. Fallback: Key, wenn nicht gefunden.
+- Locale-Switch: Flaggen-Pills im Header/Drawer, `useLocale` Context steuert aktuelle Sprache.
+- Zahlen: `parseLocalizedNumber` / `formatNumber` in `src/lib/number.js` nutzen Locale.
+
+## Theming
+- Datenattribute: `data-scheme` (light/dark/system) + `data-theme` (waldgruen).
+- ThemeToggle: `ThemeControls` (Header-Drawer). Light/Dark erzwingen grüne Palette.
+- Farbanpassung (falls nötig): `styles/tokens.css` → Variablen für `--accent`, `--accent-2`, `--accent-3`.
+
+## Berechnung & Daten
+- `src/lib/calc.js`: Kernformeln, Grenzwerte, Summencheck.
+- `src/components/MarinadeForm.jsx`: Validierung, Fehlermeldungen, Eignungsstatus (safe/chilled/unsafe), pH-Logik, Lagerzweck-Presets, Mobile-Ergebnisleiste.
+- `src/lib/recipes.js`: Rezeptdaten + Metadaten; `RecipeGallery` zeigt/filtern/öffnet Modal.
+
+## Tests
+- Jest (`npm test`):
+  - `calc.spec.js` – Berechnung
+  - `number.spec.js` – Parsing/Formatierung
+  - `recipes.spec.js` – Datenvalidierung
+  - (i18n wurde früher abgedeckt, kann bei neuen Keys ergänzt werden)
+
+## How-To: Änderungen vornehmen
+- **Texte ändern**: Passende Keys in `src/i18n/*.json` anpassen. Bei neuen Keys in allen Sprachen ergänzen.
+- **Farben ändern**: `styles/tokens.css` bearbeiten; Light/Dark separat testen. Forciertes Grün aktuell in Light/Dark.
+- **Hero-Bild tauschen**: Neues Bild nach `public/` legen (z.B. `Hero_new.jpg`), in `styles/app.css` → `.hero-photo` URL anpassen und ggf. Badge-Bild im Header (`SiteHeader.jsx` → `brand-badge`).
+- **Drawer/Icon-Farben**: `styles/app.css` → `.drawer-close`, `.drawer-nav a` etc. Hover/Fokus beachten.
+- **Neue Sektion mit Reveal**: Element mit `className="reveal"` versehen; `useScrollReveal` ist global aktiv.
+- **Form-Logik erweitern**: `MarinadeForm.jsx` – Eingabefelder, Validierung, Fehlermeldungen; Grenzwerte in `ranges`.
+
+## Troubleshooting
+- **Farben wirken falsch im Light-Theme**: Prüfe `styles/tokens.css` (Light-Block) und Overrides in `app.css`/`global.css`. Der Toggle setzt immer `data-theme="waldgruen"`.
+- **Bild wird nicht angezeigt**: Sicherstellen, dass Datei in `public/` liegt und Pfad `/Dateiname` in CSS/JS stimmt. Browser-Cache leeren.
+- **Reveal-Animation triggert nicht**: Prüfe, ob `.reveal` gesetzt ist und `useScrollReveal` (App-UseEffect) läuft; bei `prefers-reduced-motion` deaktiviert.
+- **Modal/Drawer nicht schließbar**: Overlay-Click, ESC und Buttons sind verdrahtet; Konsole auf Fehler prüfen.
+- **Tests schlagen fehl**: `npm test` ausführen, Fehlermeldung beachten; häufig fehlen i18n-Keys oder Daten sind invalid.
+
 ## Lizenz
-MIT © 2024 – siehe `LICENSE`
-
----
-
-Open-Source-Projekt von Dimitri B.  
-#### Quellcode und Issues: https://github.com/Web-Developer-DB/Pilze_Marinade
+MIT-Lizenz – siehe `LICENSE`.

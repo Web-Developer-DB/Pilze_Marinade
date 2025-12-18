@@ -8,6 +8,8 @@ const SCHEMES = [
   { value: "dark", icon: "🌙", labelKey: "theme.scheme.dark" },
 ];
 
+// Hält die Scheme-Präferenz (System/Light/Dark) und setzt Theme-CSS-Variablen.
+// Light/Dark erzwingen aktuell immer das Waldgrün-Theme.
 export default function ThemeControls({ renderButton = true }) {
   const { locale } = useLocale();
   const [schemePreference, setSchemePreference] = useState("system");
@@ -38,7 +40,7 @@ export default function ThemeControls({ renderButton = true }) {
 
   useEffect(() => {
     const root = document.documentElement;
-    const theme = resolvedScheme === "dark" ? "waldgruen" : "erdtoene";
+    const theme = "waldgruen";
 
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-scheme", resolvedScheme);

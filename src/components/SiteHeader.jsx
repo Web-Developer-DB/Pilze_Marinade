@@ -4,6 +4,10 @@ import ThemeControls from "./ThemeControls.jsx";
 import { useLocale } from "../lib/locale-context.jsx";
 import { t } from "../lib/i18n.js";
 
+// Header kümmert sich um:
+// - sichtbare Hauptnavigation (Desktop) + Drawer (Mobile)
+// - Auto-Hide beim Scrollen
+// - Locale-/Theme-Switcher im Header bzw. Drawer
 const navItems = [
   { key: "nav.start", href: "#top", icon: "home" },
   { key: "nav.calculator", href: "#marinade-calculator", icon: "beaker" },
