@@ -103,10 +103,9 @@ export default function SiteHeader() {
       <div className="site-header-inner">
         <a className="brand" href="#top">
           <span className="brand-badge" aria-hidden="true">
-            <span className="mushroom-cap" />
-            <span className="mushroom-stem" />
+            <img src="/Hero.jpeg" alt="" />
           </span>
-          <span className="brand-copy">
+          <span className="brand-copy sr-only">
             <strong>{t(locale, "brand.name")}</strong>
             <small>{t(locale, "nav.tagline")}</small>
           </span>

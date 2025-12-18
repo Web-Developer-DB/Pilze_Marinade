@@ -9,6 +9,7 @@
 - Rechner im Kompaktmodus für Smartphones: Inputs, Modus-Umschalter und Ergebnisse sind ohne Scrollen sichtbar, Desktop-Resultate/Status werden auf kleinen Displays ausgeblendet.
 - Lagerzweck-Presets plus Eignungsstatus hinzugefügt; Sprach- und Zweckpills mit besserem Kontrast und kompakterem Rechner-Layout.
 - Drawer ergänzt um Theme-Umschalter, Rezeptkarten mobil klickbar, Modal-Close-Icon rot; Scroll-Reveal aktiviert.
+- Neues Hero-Branding: großes Titel-Slab mit App-Namen, Hintergrundbild (Hero.jpeg) und Badge-Bild statt SVG-Pilz.
 
 ### Removed
 - Untere Persistent-Navigation zugunsten des vereinheitlichten Drawers/Headers.
