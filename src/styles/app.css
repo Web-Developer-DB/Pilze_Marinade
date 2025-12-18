@@ -24,6 +24,8 @@
   display:grid;
   gap: clamp(24px, 5vw, 48px);
   width:100%;
+  max-width: var(--container);
+  margin:0 auto;
 }
 
 .section{ display:grid; gap: clamp(12px, 3vw, 20px); }
@@ -1255,5 +1257,24 @@
   .quick-links,
   .menu-trigger{
     display:none;
+  }
+  .marinade-card{
+    padding:18px;
+    gap:14px;
+  }
+  .marinade-layout{
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:14px;
+  }
+  .marinade-pane{
+    padding:16px;
+    gap:12px;
+  }
+  .marinade-form fieldset{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:12px 16px;
+  }
+  .marinade-form .field:nth-child(4){
+    grid-column: 1 / -1;
   }
 }

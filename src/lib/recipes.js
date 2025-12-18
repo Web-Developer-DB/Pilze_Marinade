@@ -21,7 +21,7 @@ export const recipes = [
         steps: [
           "Pilze zweimal in frischem Wasser 5 Minuten blanchieren, dann abtropfen lassen.",
           "Wasser, Essig, Salz, Zucker und Gewürze 5 Minuten kochen.",
-          "Pilze zufügen, weitere 10 Minuten leise köcheln, Dildolden zugeben.",
+          "Pilze zufügen, weitere 10 Minuten leise köcheln, Dilldolden zugeben.",
           "Heiß in Gläser füllen, mit Sud bedecken und 48 Stunden reifen lassen."
         ]
       },
@@ -40,8 +40,8 @@ export const recipes = [
         steps: [
           "Blanch mushrooms twice for 5 minutes, changing the water each time.",
           "Boil water, vinegar, salt, sugar, and spices for 5 minutes.",
-          "Add mushrooms, simmer gently 10 minutes, add dill umbels.",
-          "Pack hot with brine, seal, and cure 48 hours." 
+          "Add mushrooms, simmer gently for 10 minutes, then add dill umbels.",
+          "Pack hot with brine, seal, and cure for 48 hours." 
         ]
       },
       ru: {
@@ -50,7 +50,7 @@ export const recipes = [
         ingredients: [
           "1 кг очищенных белых грибов",
           "400 мл воды",
-          "200 мл 9 %-ного уксуса, разбавленного до 6 %",
+          "200 мл 9%-ного уксуса, разбавленного до 6 %",
           "1 ст. л. соли, 1 ст. л. сахара",
           "6 горошин душистого перца, 4 горошины чёрного",
           "3 лавровых листа, 4 зонтика укропа",
@@ -74,7 +74,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Sibirische Rotkappen mit Knoblauch",
-        intro: "Beliebtes Rezept aus Archangelsk mit kräftiger Brühe und Johannisbeerblatt.",
+        intro: "Beliebtes Rezept aus Archangelsk mit kräftiger Brühe und Johannisbeerblättern.",
         ingredients: [
           "800 g Rotkappen",
           "350 ml Wasser",
@@ -88,7 +88,7 @@ export const recipes = [
           "Pilze putzen, in Stücke schneiden und 20 Minuten in leicht gesalzenem Wasser garen.",
           "Sud abgießen, Pilze abspülen.",
           "Marinade aus Wasser, Essig, Salz, Zucker und Gewürzen 7 Minuten kochen.",
-          "Pilze und Johannisbeerblätter zugeben, weitere 5 Minuten ziehen lassen, einfüllen." 
+          "Pilze und Johannisbeerblätter zugeben, weitere 5 Minuten ziehen lassen, heiß einfüllen." 
         ]
       },
       en: {
@@ -107,7 +107,7 @@ export const recipes = [
           "Trim and cut mushrooms, simmer 20 minutes in lightly salted water.",
           "Drain, rinse, and set aside.",
           "Boil water, vinegar, salt, sugar, and spices for 7 minutes.",
-          "Add mushrooms and leaves, infuse 5 minutes, jar hot." 
+          "Add mushrooms and leaves, infuse for 5 minutes, then jar hot." 
         ]
       },
       ru: {
@@ -116,7 +116,7 @@ export const recipes = [
         ingredients: [
           "800 г подосиновиков",
           "350 мл воды",
-          "150 мл 9 %-ного уксуса, доведённого до 6 %",
+          "150 мл 9%-ного уксуса, доведённого до 6 %",
           "2 ст. л. соли, 1 ст. л. сахара",
           "5 зубчиков чеснока",
           "5 листьев чёрной смородины",
@@ -126,7 +126,7 @@ export const recipes = [
           "Очистите и нарежьте грибы, варите 20 минут в подсоленной воде.",
           "Откиньте на дуршлаг и промойте.",
           "Маринад из воды, уксуса, соли, сахара и специй кипятите 7 минут.",
-          "Всыпьте грибы и листья, прогрейте ещё 5 минут, разлейте горячим." 
+          "Добавьте грибы и листья, прогрейте ещё 5 минут, разлейте горячим." 
         ]
       }
     }
@@ -140,7 +140,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Landhaus-Rauhfüße mit Meerrettich",
-        intro: "Dörfliche Einmachvariante aus Wologda mit Meerrettichwurzel und укроп.",
+        intro: "Dörfliche Einmachvariante aus Wologda mit Meerrettichwurzel und Dill.",
         ingredients: [
           "900 g Birkenpilze",
           "450 ml Wasser",
@@ -154,7 +154,7 @@ export const recipes = [
           "Pilze putzen, halbieren und 15 Minuten blanchieren.",
           "Marinade aus Wasser, Essig, Salz, Zucker, Pfeffer aufkochen.",
           "Meerrettich und Dill zugeben, Pilze einlegen und 7 Minuten ziehen lassen.",
-          "Heiß in Gläser verteilen, Dill obenauf." 
+          "Heiß in Gläser füllen, Dill obenauf legen." 
         ]
       },
       en: {
@@ -182,7 +182,7 @@ export const recipes = [
         ingredients: [
           "900 г подберёзовиков",
           "450 мл воды",
-          "180 мл 9 %-ного уксуса, разбавленного до 5,5 %",
+          "180 мл 9%-ного уксуса, разбавленного до 5,5 %",
           "1,5 ст. л. соли, 1 ст. л. сахара",
           "1 ст. л. свежего тёртого хрена",
           "1 пучок укропа",
@@ -248,7 +248,7 @@ export const recipes = [
         ingredients: [
           "700 г очищенных маслят",
           "300 мл воды",
-          "120 мл 9 %-ного уксуса, разведённого до 5 %",
+          "120 мл 9%-ного уксуса, разведённого до 5 %",
           "1,5 ст. л. соли, 1 ст. л. сахара",
           "2 лавровых листа, 4 бутона гвоздики",
           "1 ч. л. семян укропа",
@@ -272,7 +272,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Klassische Waldhonigpilze",
-        intro: "Bewährte Variante aus dem Russischen Kochbuch von Pokhlebkin.",
+        intro: "Bewährte Variante aus dem russischen Kochbuch von Pokhlebkin.",
         ingredients: [
           "1 kg Waldhonigpilze",
           "500 ml Wasser",
@@ -305,16 +305,16 @@ export const recipes = [
           "Blanch mushrooms twice for 5 minutes each, changing the water.",
           "Boil marinade, add halved garlic cloves.",
           "Simmer mushrooms gently for 10 minutes.",
-          "Pack hot and mature 72 hours." 
+          "Pack hot and mature for 72 hours." 
         ]
       },
       ru: {
         name: "Опята маринованные классические",
-        intro: "Рецепт по Похлёбкину — стандарт русской куліны.",
+        intro: "Рецепт по Похлёбкину — стандарт русской кулинарии.",
         ingredients: [
           "1 кг лесных опят",
           "500 мл воды",
-          "200 мл 9 %-ного уксуса, доведённого до 6 %",
+          "200 мл 9%-ного уксуса, доведённого до 6 %",
           "2 ст. л. соли, 1,5 ст. л. сахара",
           "8 зубчиков чеснока",
           "8 горошин душистого перца, 6 чёрного",
@@ -337,8 +337,8 @@ export const recipes = [
     restHours: 24,
     locale: {
       de: {
-        name: "Karelische Reizker mit Mor­scher-Würze",
-        intro: "Legendärer Karelien-Mix mit Möhren und Zwiebel im Marinadensud.",
+        name: "Karelische Reizker mit Möhrenwürze",
+        intro: "Legendärer Karelien-Mix mit Möhren und Zwiebeln im Marinadensud.",
         ingredients: [
           "800 g Reizker",
           "350 ml Wasser",
@@ -367,9 +367,9 @@ export const recipes = [
           "5 peppercorns, 2 cloves"
         ],
         steps: [
-          "Boil mushrooms 15 minutes with salted water, add carrot and onion.",
+          "Boil mushrooms for 15 minutes in salted water, then add carrot and onion.",
           "Cook marinade with spices 7 minutes more.",
-          "Fill jars while hot and rest 24 hours." 
+          "Fill jars while hot and rest for 24 hours." 
         ]
       },
       ru: {
@@ -378,7 +378,7 @@ export const recipes = [
         ingredients: [
           "800 г рыжиков",
           "350 мл воды",
-          "150 мл 6 %-ного уксуса",
+          "150 мл 6%-ного уксуса",
           "1,5 ст. л. соли, 1 ст. л. сахара",
           "1 морковь кружками",
           "1 луковица кольцами",
@@ -400,10 +400,10 @@ export const recipes = [
     restHours: 48,
     locale: {
       de: {
-        name: "Nordische Violettschleierlinge",
+        name: "Nordische Wollige Milchlinge",
         intro: "Beliebt in Komi: mehrfaches Wässern und kräftiger Knoblauch.",
         ingredients: [
-          "700 g Wulstlinge/Violette Milchlinge",
+          "700 g Wollige Milchlinge",
           "500 ml Wasser",
           "160 ml 9%-Essig, auf 5,5 % verdünnt",
           "2 EL Salz, 1 EL Zucker",
@@ -434,16 +434,16 @@ export const recipes = [
           "Soak mushrooms for 2 days, changing water frequently.",
           "Boil in fresh water 15 minutes.",
           "Cook marinade with spices 8 minutes, add mushrooms.",
-          "Jar hot and mature 48 hours." 
+          "Jar hot and mature for 48 hours." 
         ]
       },
       ru: {
         name: "Волнушки по-северному",
-        intro: "Коми рецепт с замачиванием и чесноком.",
+        intro: "Коми-рецепт с замачиванием и чесноком.",
         ingredients: [
           "700 г волнушек",
           "500 мл воды",
-          "160 мл 9 %-ного уксуса, разведённого до 5,5 %",
+          "160 мл 9%-ного уксуса, разведённого до 5,5 %",
           "2 ст. л. соли, 1 ст. л. сахара",
           "6 зубчиков чеснока",
           "6 листьев смородины",
@@ -467,7 +467,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Ural-Milchpilze mit Dillschirmen",
-        intro: "Uralskiy marinat nach offiziellen sowjetischen Normen.",
+        intro: "Ural-Marinade nach offiziellen sowjetischen Normen.",
         ingredients: [
           "900 g Milchlinge",
           "450 ml Wasser",
@@ -498,7 +498,7 @@ export const recipes = [
         steps: [
           "After soaking, boil mushrooms 20 minutes.",
           "Cook marinade 7 minutes, add dill and garlic.",
-          "Combine with mushrooms, fill jars hot, age 72 hours." 
+          "Combine with mushrooms, fill jars hot, age for 72 hours." 
         ]
       },
       ru: {
@@ -507,7 +507,7 @@ export const recipes = [
         ingredients: [
           "900 г груздей",
           "450 мл воды",
-          "200 мл 9 %-ного уксуса, разбавленного до 6 %",
+          "200 мл 9%-ного уксуса, разбавленного до 6 %",
           "2 ст. л. соли, 1,5 ст. л. сахара",
           "2 зонтика укропа, 1 ч. л. горчицы зерном",
           "5 зубчиков чеснока",
@@ -559,9 +559,9 @@ export const recipes = [
           "1 small shallot"
         ],
         steps: [
-          "Wash thoroughly, simmer 12 minutes.",
+          "Wash mushrooms thoroughly, simmer for 12 minutes.",
           "Cook marinade with spices and shallot 5 minutes.",
-          "Combine with mushrooms, chill 18 hours." 
+          "Combine with mushrooms, chill for 18 hours." 
         ]
       },
       ru: {
@@ -570,11 +570,11 @@ export const recipes = [
         ingredients: [
           "700 г лисичек",
           "320 мл воды",
-          "130 мл 6 %-ного уксуса",
+          "130 мл 6%-ного уксуса",
           "1,5 ст. л. соли, 0,5 ст. л. сахара",
           "1 ч. л. семян кориандра",
           "4 горошины белого перца",
-          "1 небольшая шалот"
+          "1 небольшая луковица шалота"
         ],
         steps: [
           "Тщательно промойте грибы и варите 12 минут.",
@@ -626,7 +626,7 @@ export const recipes = [
           "Boil mushrooms 15 minutes, skimming foam.",
           "Cook marinade, add halved shallots.",
           "Steep mushrooms 8 minutes in the brine.",
-          "Jar and rest 48 hours." 
+          "Jar and rest for 48 hours." 
         ]
       },
       ru: {
@@ -635,7 +635,7 @@ export const recipes = [
         ingredients: [
           "750 г польских грибов",
           "360 мл воды",
-          "140 мл 6 %-ного уксуса",
+          "140 мл 6%-ного уксуса",
           "1,5 ст. л. соли, 1 ст. л. сахара",
           "2 шалота",
           "5 лавровых листов",
@@ -690,7 +690,7 @@ export const recipes = [
         steps: [
           "Blanch mushrooms 10 minutes, boil onions separately 2 minutes.",
           "Cook marinade 5 minutes, add mushrooms and onions.",
-          "Top with parsley, rest 24 hours." 
+          "Top with parsley, rest for 24 hours." 
         ]
       },
       ru: {
@@ -699,7 +699,7 @@ export const recipes = [
         ingredients: [
           "700 г сыроежек",
           "300 мл воды",
-          "120 мл 6 %-ного уксуса",
+          "120 мл 6%-ного уксуса",
           "1 ст. л. соли, 1 ст. л. сахара",
           "2 луковицы половинками",
           "1 ч. л. чёрного перца",
@@ -753,7 +753,7 @@ export const recipes = [
         steps: [
           "Slice mushrooms, sweat 5 minutes without oil.",
           "Cook with water, vinegar, spices for 5 minutes.",
-          "Pack hot with parsley, chill 6 hours." 
+          "Pack hot with parsley, chill for 6 hours." 
         ]
       },
       ru: {
@@ -765,7 +765,7 @@ export const recipes = [
           "120 мл яблочного уксуса 6 %",
           "1 ст. л. соли, 1 ст. л. сахара",
           "3 зубчика чеснока",
-          "1 ч. л. паприки хлопьями",
+          "1 ч. л. хлопьев паприки",
           "3 веточки петрушки"
         ],
         steps: [
@@ -785,7 +785,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Stolitschni-Champignons",
-        intro: "Gemäß sowjetischer Hausfrauenseite: süß-sauer mit Pflanzenöl.",
+        intro: "Nach sowjetischen Hausfrauenmagazinen: süß-sauer mit Pflanzenöl.",
         ingredients: [
           "800 g kleine Champignons",
           "300 ml Wasser",
@@ -816,7 +816,7 @@ export const recipes = [
         steps: [
           "Blanch mushrooms 5 minutes.",
           "Cook marinade with oil, garlic, pepper for 5 minutes.",
-          "Combine and jar hot, rest 8 hours." 
+          "Combine and jar hot, rest for 8 hours." 
         ]
       },
       ru: {
@@ -825,7 +825,7 @@ export const recipes = [
         ingredients: [
           "800 г мелких шампиньонов",
           "300 мл воды",
-          "120 мл 6 %-ного уксуса",
+          "120 мл 6%-ного уксуса",
           "1,5 ст. л. сахара, 1 ст. л. соли",
           "3 ст. л. подсолнечного масла",
           "5 зубчиков чеснока",
@@ -848,13 +848,13 @@ export const recipes = [
     locale: {
       de: {
         name: "Leningrader Winterpilze",
-        intro: "Amtliches Rezept für зимние опята с морковью и чесноком.",
+        intro: "Amtliches Rezept für Winterhonigpilze mit Karotte und Knoblauch.",
         ingredients: [
           "600 g Winterpilze",
           "260 ml Wasser",
           "120 ml 6%-Essig",
           "1 EL Salz, 1 EL Zucker",
-          "1 Karotte streifig",
+          "1 Karotte in Streifen",
           "3 Knoblauchzehen",
           "1 TL schwarzer Pfeffer"
         ],
@@ -865,7 +865,7 @@ export const recipes = [
         ]
       },
       en: {
-        name: "Leningrad Winter Honeyagarics",
+        name: "Leningrad Winter Honey Agarics",
         intro: "Official preserving method for winter honey mushrooms with carrot strips.",
         ingredients: [
           "600 g winter honey mushrooms",
@@ -879,7 +879,7 @@ export const recipes = [
         steps: [
           "Boil mushrooms 7 minutes.",
           "Simmer marinade with carrot and garlic 6 minutes.",
-          "Combine, jar hot, rest 12 hours." 
+          "Combine, jar hot, rest for 12 hours." 
         ]
       },
       ru: {
@@ -888,7 +888,7 @@ export const recipes = [
         ingredients: [
           "600 г зимних опят",
           "260 мл воды",
-          "120 мл 6 %-ного уксуса",
+          "120 мл 6%-ного уксуса",
           "1 ст. л. соли, 1 ст. л. сахара",
           "1 морковь соломкой",
           "3 зубчика чеснока",
@@ -911,7 +911,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Uralsche Morcheln im Marinadekrug",
-        intro: "Offiziell empfohlen mit обваривание und heller Brühe.",
+        intro: "Offiziell empfohlen mit kurzem Blanchieren und heller Brühe.",
         ingredients: [
           "400 g Morcheln",
           "300 ml Wasser",
@@ -942,16 +942,16 @@ export const recipes = [
         steps: [
           "Soak morels 30 minutes, boil 15 minutes.",
           "Cook marinade with spices and onion 5 minutes.",
-          "Combine and mature 36 hours." 
+          "Combine and mature for 36 hours." 
         ]
       },
       ru: {
         name: "Сморчки по-уральски",
-        intro: "Рекомендация к праздничным столам в российских энциклопедиях.",
+        intro: "Рекомендовано для праздничных столов в российских энциклопедиях.",
         ingredients: [
           "400 г сморчков",
           "300 мл воды",
-          "130 мл 6 %-ного уксуса",
+          "130 мл 6%-ного уксуса",
           "1 ст. л. соли, 1 ст. л. сахара",
           "4 бутона гвоздики",
           "1 ч. л. лимонного сока",
@@ -974,7 +974,7 @@ export const recipes = [
     locale: {
       de: {
         name: "Grüne Ritterlinge für den Vorrat",
-        intro: "Beliebt in Sibirien, mit Meerrettich und укроп.",
+        intro: "Beliebt in Sibirien, mit Meerrettich und Dill.",
         ingredients: [
           "800 g Grünlinge",
           "400 ml Wasser",
@@ -1005,7 +1005,7 @@ export const recipes = [
         steps: [
           "Soak mushrooms 24 hours, boil 20 minutes.",
           "Cook marinade 6 minutes, stir in horseradish.",
-          "Jar hot and chill 48 hours." 
+          "Jar hot and chill for 48 hours." 
         ]
       },
       ru: {
@@ -1014,7 +1014,7 @@ export const recipes = [
         ingredients: [
           "800 г зелёных рядовок",
           "400 мл воды",
-          "160 мл 6 %-ного уксуса",
+          "160 мл 6%-ного уксуса",
           "2 ст. л. соли, 1 ст. л. сахара",
           "1 ст. л. тёртого хрена",
           "2 зонтика укропа",
@@ -1049,7 +1049,7 @@ export const recipes = [
         ],
         steps: [
           "Pilze 2 Tage wässern, Wasser wechseln.",
-          "Zwei Mal je 5 Minuten blanchieren.",
+          "Zweimal je 5 Minuten blanchieren.",
           "Marinade 8 Minuten kochen, Pilze zugeben.",
           "Gläser füllen, 72 Stunden reifen lassen." 
         ]
@@ -1070,7 +1070,7 @@ export const recipes = [
           "Soak mushrooms 2 days, changing water.",
           "Blanch twice for 5 minutes each.",
           "Boil marinade 8 minutes, add mushrooms.",
-          "Jar and mature 72 hours." 
+          "Jar and mature for 72 hours." 
         ]
       },
       ru: {
@@ -1079,7 +1079,7 @@ export const recipes = [
         ingredients: [
           "900 г чернушек",
           "450 мл воды",
-          "200 мл 6 %-ного уксуса",
+          "200 мл 6%-ного уксуса",
           "2 ст. л. соли, 1 ст. л. сахара",
           "5 зубчиков чеснока",
           "1 ч. л. хлопьев чили",
@@ -1134,7 +1134,7 @@ export const recipes = [
         steps: [
           "Boil mushrooms 7 minutes.",
           "Cook marinade with marjoram and onion briefly.",
-          "Add mushrooms, tuck in dill, macerate 6 hours." 
+          "Add mushrooms, tuck in dill, rest for 6 hours." 
         ]
       },
       ru: {
@@ -1143,7 +1143,7 @@ export const recipes = [
         ingredients: [
           "500 г луговых опят",
           "240 мл воды",
-          "100 мл 6 %-ного уксуса",
+          "100 мл 6%-ного уксуса",
           "1 ст. л. соли, 1 ст. л. сахара",
           "1 ч. л. сушёного майорана",
           "3 веточки укропа",
@@ -1166,13 +1166,13 @@ export const recipes = [
     locale: {
       de: {
         name: "Valui nach Klosterart",
-        intro: "Vorblanchiert, dann mit Meerrettich und Blättern der Kirsche.",
+        intro: "Vorblanchiert, dann mit Meerrettich und Kirschblättern.",
         ingredients: [
           "800 g Valui-Russula",
           "420 ml Wasser",
           "160 ml 6%-Essig",
           "2 EL Salz, 1 EL Zucker",
-          "5 Blätter Kirsche",
+          "5 Kirschblätter",
           "1 EL geriebener Meerrettich",
           "5 Knoblauchzehen"
         ],
@@ -1199,7 +1199,7 @@ export const recipes = [
           "Soak mushrooms 48 hours.",
           "Boil 20 minutes, changing water.",
           "Cook marinade 7 minutes, add leaves, horseradish, garlic.",
-          "Jar hot, mature 72 hours." 
+          "Jar hot, mature for 72 hours." 
         ]
       },
       ru: {
@@ -1208,7 +1208,7 @@ export const recipes = [
         ingredients: [
           "800 г валуев",
           "420 мл воды",
-          "160 мл 6 %-ного уксуса",
+          "160 мл 6%-ного уксуса",
           "2 ст. л. соли, 1 ст. л. сахара",
           "5 листьев вишни",
           "1 ст. л. тёртого хрена",
@@ -1232,14 +1232,14 @@ export const recipes = [
     locale: {
       de: {
         name: "Riesenboviste in Knoblauchlake",
-        intro: "Aus Kursk bekannte Beilage – nur junge Puffbälle verwenden.",
+        intro: "Aus Kursk bekannte Beilage – nur junge Boviste verwenden.",
         ingredients: [
           "600 g junge Boviste",
           "260 ml Wasser",
           "120 ml 6%-Essig",
           "1 EL Salz, 1 EL Zucker",
           "6 Knoblauchzehen",
-          "1 TL schwarzen Pfeffer",
+          "1 TL schwarzer Pfeffer",
           "2 EL Sonnenblumenöl"
         ],
         steps: [
@@ -1263,16 +1263,16 @@ export const recipes = [
         steps: [
           "Peel and cube mushrooms, blanch 5 minutes.",
           "Boil marinade, add oil and garlic.",
-          "Combine and chill 12 hours." 
+          "Combine and chill for 12 hours." 
         ]
       },
       ru: {
         name: "Дождевики чесночные",
-        intro: "Курская закуска только из молодых дождевиков.",
+        intro: "Курская закуска: только из молодых дождевиков.",
         ingredients: [
           "600 г молодых дождевиков",
           "260 мл воды",
-          "120 мл 6 %-ного уксуса",
+          "120 мл 6%-ного уксуса",
           "1 ст. л. соли, 1 ст. л. сахара",
           "6 зубчиков чеснока",
           "1 ч. л. чёрного перца",

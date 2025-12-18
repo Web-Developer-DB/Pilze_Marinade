@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { calcAcidVolumes, safetyStatus } from "../lib/calc.js";
 import { parseLocalizedNumber, formatNumber } from "../lib/number.js";
 import { t } from "../lib/i18n.js";
@@ -21,6 +21,7 @@ const PURPOSES = [
   { id: "fridge", target: 2.3 },
   { id: "quick", target: 2.0 },
 ];
+const VINEGAR_STORAGE_KEY = "pilze_marinade_vinegar";
 
 function getSafetyMeta(code) {
   switch (code) {
@@ -54,14 +55,28 @@ function buildAriaList(list) {
 
 export default function MarinadeForm() {
   const { locale } = useLocale();
-  const [inputs, setInputs] = useState({
-    total: "",
-    vinegar: "",
-    target: "",
-    ph: "",
+  const [inputs, setInputs] = useState(() => {
+    const storedVinegar =
+      typeof window !== "undefined" ? window.localStorage.getItem(VINEGAR_STORAGE_KEY) : null;
+    return {
+      total: "",
+      vinegar: storedVinegar ?? "",
+      target: "",
+      ph: "",
+    };
   });
   const [touched, setTouched] = useState({});
   const [purpose, setPurpose] = useState("room");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const value = inputs.vinegar.trim();
+    if (value) {
+      window.localStorage.setItem(VINEGAR_STORAGE_KEY, inputs.vinegar);
+    } else {
+      window.localStorage.removeItem(VINEGAR_STORAGE_KEY);
+    }
+  }, [inputs.vinegar]);
 
   const evaluation = useMemo(() => {
     // Eingaben parsen + Fehler sammeln
