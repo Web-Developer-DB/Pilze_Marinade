@@ -82,7 +82,14 @@ export default function RecipeGallery() {
             },
           ];
           return (
-            <article key={recipe.id} className="recipe-card">
+            <article
+              key={recipe.id}
+              className="recipe-card"
+              onClick={() => setOpenRecipe(recipe)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setOpenRecipe(recipe)}
+            >
               <header className="recipe-head">
                 <div>
                   <h3>{recipe.text.name}</h3>

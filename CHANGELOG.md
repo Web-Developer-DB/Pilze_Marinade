@@ -7,6 +7,8 @@
 - Themes folgen nun strikt System-Hell/Dunkel mit automatischem Wald-Grund im Dunkelmodus; Kontraste von Hover/Fokus-States wurden für alle Schemen angehoben.
 - Sicherheitspanel und weitere Karten erhalten hellere Hintergründe und Textfarben für bessere Lesbarkeit in dunklen Themes.
 - Rechner im Kompaktmodus für Smartphones: Inputs, Modus-Umschalter und Ergebnisse sind ohne Scrollen sichtbar, Desktop-Resultate/Status werden auf kleinen Displays ausgeblendet.
+- Lagerzweck-Presets plus Eignungsstatus hinzugefügt; Sprach- und Zweckpills mit besserem Kontrast und kompakterem Rechner-Layout.
+- Drawer ergänzt um Theme-Umschalter, Rezeptkarten mobil klickbar, Modal-Close-Icon rot; Scroll-Reveal aktiviert.
 
 ### Removed
 - Untere Persistent-Navigation zugunsten des vereinheitlichten Drawers/Headers.

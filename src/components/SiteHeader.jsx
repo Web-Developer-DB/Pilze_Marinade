@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LocaleSwitcher from "./LocaleSwitcher.jsx";
+import ThemeControls from "./ThemeControls.jsx";
 import { useLocale } from "../lib/locale-context.jsx";
 import { t } from "../lib/i18n.js";
 
@@ -163,6 +164,9 @@ export default function SiteHeader() {
               </a>
             ))}
           </nav>
+          <div className="drawer-controls">
+            <ThemeControls />
+          </div>
         </div>
       </div>
     </header>

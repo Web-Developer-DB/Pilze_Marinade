@@ -5,6 +5,7 @@ import SiteHeader from "./components/SiteHeader.jsx";
 import ThemeControls from "./components/ThemeControls.jsx";
 import { LocaleProvider, useLocale } from "./lib/locale-context.jsx";
 import { t } from "./lib/i18n.js";
+import useScrollReveal from "./hooks/useScrollReveal.js";
 
 function Hero() {
   const { locale } = useLocale();
@@ -226,6 +227,10 @@ function AppContent() {
 }
 
 export default function App() {
+  useEffect(() => {
+    useScrollReveal();
+  }, []);
+
   return (
     <LocaleProvider>
       <ThemeControls renderButton={false} />
